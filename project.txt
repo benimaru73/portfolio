@@ -1,0 +1,35 @@
+Stage – IBonia
+
+Mise en place d’une plateforme USSD générique
+Technologies : Java Spring Boot, Next.js
+
+Architecture USSD dynamique basée sur un modèle de nœuds récursifs
+Conception et implémentation d’un modèle arborescent générique reposant sur des entités Node auto-référencées, permettant de définir dynamiquement les parcours USSD via la base de données, sans logique codée en dur.
+
+Gestion de systèmes informationnels et transactionnels
+Implémentation d’un typage logique des nœuds (MENU, INPUT, REQUEST) permettant :
+
+l’exécution d’appels API informatifs (météo, horaires, informations diverses),
+
+l’exécution de transactions (paiements MVola),
+
+le parsing dynamique des réponses API pour générer les écrans USSD en temps réel.
+
+Architecture multi-client sans redéploiement
+Mise en place d’une architecture orientée multi-tenancy logique, où chaque client configure ses parcours USSD, endpoints API et tokens directement en base de données, sans modification ni redéploiement du code applicatif.
+
+Projet – BICI
+
+Projet Socobis (asynchrone)
+Participation au projet Socobis dans un contexte asynchrone, avec contribution ciblée sur la page Comptabilité, afin de valoriser un apport fonctionnel et technique précis.
+
+Projet – Ministère de l’Intérieur de Madagascar (Projet – BICI)
+
+Système de demande de carte de résident
+Participation à la conception et à l’implémentation des modules suivants :
+
+Gestion des demandes
+
+Gestion des demandeurs
+
+Gestion des quittances
