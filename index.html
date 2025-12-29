@@ -29,6 +29,7 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(229, 231, 235, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         @media (prefers-color-scheme: dark) {
             .glass-card {
@@ -45,14 +46,15 @@
 
         /* Mac-style colorful border animation */
         @keyframes border-dance {
-            0% { background-position: 0% 50%; }
+            0% { background-position: 0 50%; }
             50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            100% { background-position: 0 50%; }
         }
 
         .mac-border-glow {
             position: relative;
             z-index: 0;
+            /* overflow: hidden; Removed to allow glow to spill out slightly if needed, but kept for border radius */
             overflow: hidden;
         }
 
@@ -68,48 +70,105 @@
             );
             background-size: 400%;
             filter: blur(8px);
-            opacity: 0.5;
-            transition: opacity 0.3s ease;
+            opacity: 0; /* Hidden by default */
+            transition: opacity 0.5s ease;
             border-radius: inherit;
             animation: border-dance 10s linear infinite;
         }
 
-        .mac-border-glow:hover::before {
-            opacity: 1;
+        .mac-border-glow:hover::before,
+        .mac-border-glow.active-glow::before {
+            opacity: 1; /* Visible when active/centered */
+        }
+
+        .glass-card.active-glow {
+            transform: scale(1.05);
+            z-index: 10;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
         }
 
         .mac-border-glow::after {
             content: "";
             position: absolute;
             z-index: -1;
-            inset: 1px;
-            background: inherit;
+            inset: 1px; /* This creates the border thickness */
+            background: inherit; /* Matches the card background */
             border-radius: inherit;
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Marquee Animation Styles */
+        .marquee-wrapper {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            -webkit-mask-image: -webkit-linear-gradient(left, transparent, black 5%, black 95%, transparent);
+            padding: 3rem 0; /* Increased padding for scale effect */
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: 2rem;
+            width: max-content;
+            animation: scroll 40s linear infinite;
+        }
+
+        .marquee-track:hover, .marquee-track:active, .marquee-track:focus-within {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+
+        .marquee-item-skill {
+            flex: 0 0 auto;
+            width: 300px;
+        }
+
+        .marquee-item-project {
+            flex: 0 0 auto;
+            width: 500px;
+            max-width: 85vw;
         }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 dark:bg-slate-950 dark:text-gray-100 transition-colors duration-300 min-h-screen flex flex-col">
 
     <!-- Header / Hero Section -->
-    <header class="container mx-auto px-6 py-16 md:py-24 text-center">
+    <header class="container mx-auto px-6 py-16 md:py-24 text-center reveal">
         <div class="inline-block p-1 rounded-full bg-gradient-to-r from-blue-500 to-teal-400 mb-6">
             <div class="bg-white dark:bg-slate-900 rounded-full p-1 overflow-hidden">
                 <!-- Remplacez l'URL ci-dessous par le chemin de votre photo locale si nécessaire -->
                 <img src="inc/fitahianaLeong.jpeg" alt="Fitahiana Leong" class="w-32 h-32 rounded-full object-cover">
             </div>
         </div>
-        <h1 class="text-4xl md:text-6xl font-bold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-teal-500 dark:from-blue-400 dark:to-teal-300">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4 pb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-teal-500 dark:from-blue-400 dark:to-teal-300 leading-tight">
             Fitahiana Leong Eli Mathieu
         </h1>
         <br>
         <h2 class="text-2xl md:text-3xl font-bold text-gray-700 dark:text-gray-200 mb-6">
-            Dev Full Stack junior
+            Développeur Full Stack
         </h2>
         <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-6 font-semibold italic">
-            Mon objectif : apprendre vite, résoudre des problèmes concrets et livrer du code fiable.
+            "Je pense résolution. Je parle solutions. L’ingénierie logicielle en est l’expression."
         </p>
         <p class="text-lg text-gray-500 dark:text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
-            En tant que développeur junior Full Stack, je m'investis dans l'amélioration continue et la montée en compétences.J'ai contribué à des projets à fort impact, notamment chez <span class="font-bold text-blue-600 dark:text-blue-400">BICI</span>
+            Depuis 2022, j'ai piloté près d'une dizaine de projets professionnels qui ont affûté mes compétences et élargi ma vision. Aujourd'hui Développeur chez <span class="font-bold text-blue-600 dark:text-blue-400">BICI</span>, je conçois des solutions qui génèrent un impact tangible.
         </p>
         <div class="flex justify-center gap-4">
             <a href="#projects" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors shadow-lg shadow-blue-500/30">
@@ -122,13 +181,14 @@
     </header>
 
     <!-- Skills Section -->
-    <section class="py-16 bg-white dark:bg-slate-900/50">
+    <section class="py-16 bg-white dark:bg-slate-900/50 overflow-hidden">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12 text-center">Compétences Techniques</h2>
+            <h2 class="text-3xl font-bold text-center reveal mb-12">Compétences Techniques</h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="marquee-wrapper reveal">
+            <div class="marquee-track">
                 <!-- Backend -->
-                <div class="glass-card p-6 rounded-xl shadow-sm mac-border-glow">
+                <div class="glass-card p-6 rounded-xl shadow-sm mac-border-glow marquee-item-skill">
                     <h3 class="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400 border-b border-gray-100 dark:border-slate-700 pb-2">Backend Development</h3>
                     <div class="flex flex-wrap gap-4">
                         <div class="flex flex-col items-center skill-icon" title="Node.js">
@@ -151,7 +211,7 @@
                 </div>
 
                 <!-- Frontend -->
-                <div class="glass-card p-6 rounded-xl shadow-sm mac-border-glow">
+                <div class="glass-card p-6 rounded-xl shadow-sm mac-border-glow marquee-item-skill">
                     <h3 class="text-xl font-semibold mb-4 text-teal-600 dark:text-teal-400 border-b border-gray-100 dark:border-slate-700 pb-2">Web Development</h3>
                     <div class="flex flex-wrap gap-4">
                         <div class="flex flex-col items-center skill-icon" title="JavaScript">
@@ -174,7 +234,7 @@
                 </div>
 
                 <!-- DevOps -->
-                <div class="glass-card p-6 rounded-xl shadow-sm mac-border-glow">
+                <div class="glass-card p-6 rounded-xl shadow-sm mac-border-glow marquee-item-skill">
                     <h3 class="text-xl font-semibold mb-4 text-purple-600 dark:text-purple-400 border-b border-gray-100 dark:border-slate-700 pb-2">DevOps</h3>
                     <div class="flex flex-wrap gap-4">
                         <div class="flex flex-col items-center skill-icon" title="GitHub">
@@ -197,7 +257,7 @@
                 </div>
 
                 <!-- Database -->
-                <div class="glass-card p-6 rounded-xl shadow-sm mac-border-glow">
+                <div class="glass-card p-6 rounded-xl shadow-sm mac-border-glow marquee-item-skill">
                     <h3 class="text-xl font-semibold mb-4 text-orange-600 dark:text-orange-400 border-b border-gray-100 dark:border-slate-700 pb-2">Database Management</h3>
                     <div class="flex flex-wrap gap-4">
                         <div class="flex flex-col items-center skill-icon" title="MySQL">
@@ -219,16 +279,17 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
     </section>
 
     <!-- Experience Section -->
     <section class="py-16 container mx-auto px-6">
-        <h2 class="text-3xl font-bold mb-12 text-center">Expérience Professionnelle</h2>
+        <h2 class="text-3xl font-bold mb-12 text-center reveal">Expérience Professionnelle</h2>
         <div class="space-y-8 max-w-4xl mx-auto">
 
             <!-- Experience 1 -->
-            <div class="glass-card p-8 rounded-2xl relative overflow-hidden group mac-border-glow">
+            <div class="glass-card p-8 rounded-2xl relative overflow-hidden group mac-border-glow reveal">
                 <div class="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
                     <div>
@@ -249,7 +310,7 @@
             </div>
 
             <!-- Experience 2 -->
-            <div class="glass-card p-8 rounded-2xl relative overflow-hidden group mac-border-glow">
+            <div class="glass-card p-8 rounded-2xl relative overflow-hidden group mac-border-glow reveal">
                 <div class="absolute top-0 left-0 w-1 h-full bg-teal-500"></div>
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
                     <div>
@@ -274,13 +335,14 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-16 bg-gray-50 dark:bg-slate-900/50">
+    <section id="projects" class="py-16 bg-gray-50 dark:bg-slate-900/50 overflow-hidden">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12 text-center">Projets Réalisés</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center reveal mb-12">Projets Réalisés</h2>
 
+            <div class="marquee-wrapper reveal">
+            <div class="marquee-track">
                 <!-- Project 1 -->
-                <div class="glass-card rounded-2xl overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col mac-border-glow transform hover:-translate-y-1 transition-transform duration-300">
+                <div class="glass-card rounded-2xl overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col mac-border-glow transform hover:-translate-y-1 transition-transform duration-300 marquee-item-project">
                     <div class="p-8 flex-grow">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Plateforme USSD Générique</h3>
@@ -299,7 +361,7 @@
                                 <ul class="space-y-2">
                                     <li class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
                                         <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                        <span><strong>Architecture "No-Code" :</strong> Définition dynamique des parcours (Menu, Input, Request) via DB.</span>
+                                        <span><strong>Architecture "No-Code" :</strong> Définition dynamique des parcours (Menu, Input, Request) via plateforme web.</span>
                                     </li>
                                     <li class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
                                         <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
@@ -323,7 +385,7 @@
                 </div>
 
                 <!-- Project 2 -->
-                <div class="glass-card rounded-2xl overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col mac-border-glow transform hover:-translate-y-1 transition-transform duration-300">
+                <div class="glass-card rounded-2xl overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col mac-border-glow transform hover:-translate-y-1 transition-transform duration-300 marquee-item-project">
                     <div class="p-8 flex-grow">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Suite de Gestion Comptable Enterprise</h3>
@@ -366,7 +428,7 @@
                 </div>
 
                 <!-- Project 3 -->
-                <div class="glass-card rounded-2xl overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col mac-border-glow transform hover:-translate-y-1 transition-transform duration-300">
+                <div class="glass-card rounded-2xl overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col mac-border-glow transform hover:-translate-y-1 transition-transform duration-300 marquee-item-project">
                     <div class="p-8 flex-grow">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Système National de Carte de Résident</h3>
@@ -402,18 +464,17 @@
                     <div class="bg-gray-50 dark:bg-slate-800/50 px-8 py-4 border-t border-gray-100 dark:border-slate-700">
                         <div class="flex gap-3 flex-wrap">
                             <span class="px-2 py-1 text-xs font-semibold rounded bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300">Java EE</span>
-                            <span class="px-2 py-1 text-xs font-semibold rounded bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300">GovTech</span>
                             <span class="px-2 py-1 text-xs font-semibold rounded bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300">Administration</span>
                         </div>
                     </div>
                 </div>
-
+            </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact" class="bg-white dark:bg-slate-950 py-12 border-t border-gray-200 dark:border-slate-800 mt-auto">
+    <footer id="contact" class="bg-white dark:bg-slate-950 py-12 border-t border-gray-200 dark:border-slate-800 mt-auto reveal">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-2xl font-bold mb-8">Travaillons ensemble</h2>
             <div class="flex justify-center gap-6 mb-8">
@@ -440,5 +501,106 @@
         </div>
     </footer>
 
+    <script>
+        // Simple Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load
+        reveal();
+
+        // Duplicate content for infinite marquee and handle center highlight
+        document.addEventListener('DOMContentLoaded', () => {
+            const wrappers = document.querySelectorAll('.marquee-wrapper');
+
+            wrappers.forEach(wrapper => {
+                const track = wrapper.querySelector('.marquee-track');
+                const originalContent = track.innerHTML;
+
+                // Duplicate content enough times to fill screen + buffer
+                track.innerHTML = originalContent + originalContent + originalContent;
+
+                // Re-select cards after duplication
+                const cards = track.querySelectorAll('.glass-card');
+                let manualActiveCard = null;
+
+                // Add click event to cards for manual selection
+                cards.forEach(card => {
+                    card.addEventListener('click', (e) => {
+                        // Set manual active card
+                        manualActiveCard = card;
+
+                        // Update classes immediately: remove glow from all, add to clicked
+                        cards.forEach(c => c.classList.remove('active-glow'));
+                        card.classList.add('active-glow');
+                    });
+                });
+
+                // Reset manual selection on mouse leave to resume auto-center logic
+                wrapper.addEventListener('mouseleave', () => {
+                    manualActiveCard = null;
+                });
+
+                // Function to check which card is in the center
+                function checkCenter() {
+                    // If a card is manually selected (clicked) and mouse is likely still hovering,
+                    // don't override with auto-center logic
+                    if (manualActiveCard) return;
+
+                    const wrapperRect = wrapper.getBoundingClientRect();
+                    const centerPoint = wrapperRect.left + wrapperRect.width / 2;
+
+                    let closestCard = null;
+                    let minDistance = Infinity;
+
+                    cards.forEach(card => {
+                        const cardRect = card.getBoundingClientRect();
+                        const cardCenter = cardRect.left + cardRect.width / 2;
+                        const distance = Math.abs(centerPoint - cardCenter);
+
+                        // Reset state for auto mode
+                        card.classList.remove('active-glow');
+
+                        // Check if card is visible in viewport
+                        if (distance < minDistance) {
+                            minDistance = distance;
+                            closestCard = card;
+                        }
+                    });
+
+                    // Highlight the closest card if it's within a reasonable range
+                    // Increased threshold to ensure one is always highlighted
+                    if (closestCard && minDistance < 500) {
+                        closestCard.classList.add('active-glow');
+                    }
+                }
+
+                // Check on animation frame for performance
+                let ticking = false;
+                function onTick() {
+                    if (!ticking) {
+                        window.requestAnimationFrame(() => {
+                            checkCenter();
+                            ticking = false;
+                            onTick(); // Keep checking continuously
+                        });
+                        ticking = true;
+                    }
+                }
+
+                // Start the loop
+                onTick();
+            });
+        });
+    </script>
 </body>
 </html>
