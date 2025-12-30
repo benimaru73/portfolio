@@ -1,4 +1,0 @@
-DevOps: github, docker,  ci/cd, gitlab
-Web Development: javascript, react, Next, ts
-Backend Development: node.js, python, java, Spring boot
-Database Management: mysql, postgresql, mongodb, oracle
