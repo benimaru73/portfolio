@@ -74,14 +74,15 @@
             background-size: 400%;
             filter: blur(8px);
             opacity: 0; /* Hidden by default */
-            transition: opacity 0.5s ease;
+            transition: opacity 1.5s ease; /* Slow fade out (1.5s) */
             border-radius: inherit;
             animation: border-dance 10s linear infinite;
         }
 
         .mac-border-glow:hover::before,
         .mac-border-glow.active-glow::before {
-            opacity: 1; /* Visible when active/centered */
+            opacity: 1; /* Visible when active or hovered */
+            transition: opacity 0.3s ease; /* Fast fade in */
         }
 
         .glass-card.active-glow {
@@ -405,7 +406,7 @@
         // Trigger once on load
         reveal();
 
-        // Duplicate content for infinite marquee and handle center highlight
+        // Duplicate content for infinite marquee
         document.addEventListener('DOMContentLoaded', () => {
             // Render data
             renderSkills();
@@ -417,83 +418,26 @@
 
             const wrappers = document.querySelectorAll('.marquee-wrapper');
 
+            // First, handle duplication for marquee effect
             wrappers.forEach(wrapper => {
                 const track = wrapper.querySelector('.marquee-track');
                 const originalContent = track.innerHTML;
-
                 // Duplicate content enough times to fill screen + buffer
                 track.innerHTML = originalContent + originalContent + originalContent;
+            });
 
-                // Re-select cards after duplication
-                const cards = track.querySelectorAll('.glass-card');
-                let manualActiveCard = null;
+            // Global management of active state (One single active card across the whole page)
+            // We need to select cards AFTER duplication
+            const allCards = document.querySelectorAll('.glass-card');
 
-                // Add click event to cards for manual selection
-                cards.forEach(card => {
-                    card.addEventListener('click', (e) => {
-                        // Set manual active card
-                        manualActiveCard = card;
+            allCards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    // Remove active class from ALL cards in the page
+                    allCards.forEach(c => c.classList.remove('active-glow'));
 
-                        // Update classes immediately: remove glow from all, add to clicked
-                        cards.forEach(c => c.classList.remove('active-glow'));
-                        card.classList.add('active-glow');
-                    });
+                    // Add active class ONLY to the clicked card
+                    card.classList.add('active-glow');
                 });
-
-                // Reset manual selection on mouse leave to resume auto-center logic
-                wrapper.addEventListener('mouseleave', () => {
-                    manualActiveCard = null;
-                });
-
-                // Function to check which card is in the center
-                function checkCenter() {
-                    // If a card is manually selected (clicked) and mouse is likely still hovering,
-                    // don't override with auto-center logic
-                    if (manualActiveCard) return;
-
-                    const wrapperRect = wrapper.getBoundingClientRect();
-                    const centerPoint = wrapperRect.left + wrapperRect.width / 2;
-
-                    let closestCard = null;
-                    let minDistance = Infinity;
-
-                    cards.forEach(card => {
-                        const cardRect = card.getBoundingClientRect();
-                        const cardCenter = cardRect.left + cardRect.width / 2;
-                        const distance = Math.abs(centerPoint - cardCenter);
-
-                        // Reset state for auto mode
-                        card.classList.remove('active-glow');
-
-                        // Check if card is visible in viewport
-                        if (distance < minDistance) {
-                            minDistance = distance;
-                            closestCard = card;
-                        }
-                    });
-
-                    // Highlight the closest card if it's within a reasonable range
-                    // Increased threshold to ensure one is always highlighted
-                    if (closestCard && minDistance < 500) {
-                        closestCard.classList.add('active-glow');
-                    }
-                }
-
-                // Check on animation frame for performance
-                let ticking = false;
-                function onTick() {
-                    if (!ticking) {
-                        window.requestAnimationFrame(() => {
-                            checkCenter();
-                            ticking = false;
-                            onTick(); // Keep checking continuously
-                        });
-                        ticking = true;
-                    }
-                }
-
-                // Start the loop
-                onTick();
             });
         });
     </script>
