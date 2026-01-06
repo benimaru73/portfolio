@@ -115,12 +115,25 @@
 
         /* Marquee Animation Styles */
         .marquee-wrapper {
-            overflow: hidden;
+            overflow-x: auto;
+            overflow-y: hidden;
             width: 100%;
             position: relative;
             mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
             -webkit-mask-image: -webkit-linear-gradient(left, transparent, black 5%, black 95%, transparent);
             padding: 3rem 0; /* Increased padding for scale effect */
+            cursor: grab;
+            /* Hide scrollbar but keep functionality */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
+        }
+
+        .marquee-wrapper::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .marquee-wrapper.grabbing {
+            cursor: grabbing;
         }
 
         .marquee-track {
@@ -128,6 +141,11 @@
             gap: 2rem;
             width: max-content;
             animation: scroll 40s linear infinite;
+            transition: transform 0.3s ease;
+        }
+
+        .marquee-track.paused-animation {
+            animation-play-state: paused;
         }
 
         .marquee-track:hover, .marquee-track:active, .marquee-track:focus-within {
@@ -147,8 +165,8 @@
 
         .marquee-item-project {
             flex: 0 0 auto;
-            width: 500px;
-            max-width: 90vw;
+            width: 400px;
+            max-width: 85vw;
         }
         
         /* Mobile-specific improvements */
@@ -158,7 +176,7 @@
             }
             
             .marquee-item-project {
-                width: 90vw;
+                width: 85vw;
             }
             
             .marquee-wrapper {
@@ -430,14 +448,166 @@
             // We need to select cards AFTER duplication
             const allCards = document.querySelectorAll('.glass-card');
 
+            // Function to reset all active cards
+            function resetAllActiveCards() {
+                allCards.forEach(c => {
+                    c.classList.remove('active-glow');
+                    c.style.transform = '';
+                });
+                document.querySelectorAll('.marquee-track').forEach(t => {
+                    t.classList.remove('paused-animation');
+                });
+            }
+
+            // Add drag-to-scroll functionality for marquee wrappers
+            wrappers.forEach(wrapper => {
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+                let animationTimeout;
+
+                const track = wrapper.querySelector('.marquee-track');
+
+                // Calculate the width of one set of content (1/3 since we duplicated 3 times)
+                const getOneThirdWidth = () => {
+                    return track.scrollWidth / 3;
+                };
+
+                // Infinite scroll logic
+                const handleInfiniteScroll = () => {
+                    const oneThirdWidth = getOneThirdWidth();
+                    const currentScroll = wrapper.scrollLeft;
+
+                    // If scrolled to the end (near the third section), jump back to middle section
+                    if (currentScroll >= oneThirdWidth * 2 - 100) {
+                        wrapper.scrollLeft = oneThirdWidth;
+                    }
+                    // If scrolled to the beginning (near the first section), jump to middle section
+                    else if (currentScroll <= 100) {
+                        wrapper.scrollLeft = oneThirdWidth;
+                    }
+                };
+
+                // Set initial scroll position to the middle section
+                setTimeout(() => {
+                    wrapper.scrollLeft = getOneThirdWidth();
+                }, 0);
+
+                wrapper.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    wrapper.classList.add('grabbing');
+                    startX = e.pageX - wrapper.offsetLeft;
+                    scrollLeft = wrapper.scrollLeft;
+                    // Pause animation when starting to drag
+                    track.classList.add('paused-animation');
+                });
+
+                wrapper.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    wrapper.classList.remove('grabbing');
+                });
+
+                wrapper.addEventListener('mouseup', () => {
+                    isDown = false;
+                    wrapper.classList.remove('grabbing');
+                });
+
+                wrapper.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - wrapper.offsetLeft;
+                    const walk = (x - startX) * 2; // Scroll speed multiplier
+                    wrapper.scrollLeft = scrollLeft - walk;
+                });
+
+                // Touch events for mobile
+                wrapper.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].pageX - wrapper.offsetLeft;
+                    scrollLeft = wrapper.scrollLeft;
+                    track.classList.add('paused-animation');
+                }, { passive: true });
+
+                wrapper.addEventListener('touchmove', (e) => {
+                    const x = e.touches[0].pageX - wrapper.offsetLeft;
+                    const walk = (x - startX) * 2;
+                    wrapper.scrollLeft = scrollLeft - walk;
+                }, { passive: true });
+
+                // Detect when scrolling/animation resumes and reset active cards
+                wrapper.addEventListener('scroll', () => {
+                    handleInfiniteScroll();
+
+                    clearTimeout(animationTimeout);
+                    animationTimeout = setTimeout(() => {
+                        resetAllActiveCards();
+                    }, 150); // Small delay to avoid triggering during manual scroll
+                });
+            });
+
             allCards.forEach(card => {
                 card.addEventListener('click', (e) => {
+                    // Empêcher la propagation pour éviter que le clic global ne réinitialise immédiatement
+                    e.stopPropagation();
+
+                    const isMobile = window.innerWidth < 768;
+
                     // Remove active class from ALL cards in the page
-                    allCards.forEach(c => c.classList.remove('active-glow'));
+                    resetAllActiveCards();
 
                     // Add active class ONLY to the clicked card
                     card.classList.add('active-glow');
+
+                    if (isMobile) {
+                        const track = card.closest('.marquee-track');
+                        if (track) {
+                            // Force pause on the track
+                            track.classList.add('paused-animation');
+
+                            // Calculate distance to center
+                            const rect = card.getBoundingClientRect();
+                            const viewportCenter = window.innerWidth / 2;
+                            const cardCenter = rect.left + rect.width / 2;
+                            const offset = viewportCenter - cardCenter;
+
+                            // Apply transform to center the card
+                            // Combine with scale(1.05) from active-glow
+                            card.style.transform = `translateX(${offset}px) scale(1.05)`;
+                        }
+                    }
+
+                    // Auto-reset after animation completes
+                    const wrapper = card.closest('.marquee-wrapper');
+                    if (wrapper) {
+                        const track = wrapper.querySelector('.marquee-track');
+                        // Listen for animation restart
+                        const checkAnimation = setInterval(() => {
+                            const computedStyle = window.getComputedStyle(track);
+                            const animationPlayState = computedStyle.animationPlayState;
+                            if (animationPlayState === 'running') {
+                                resetAllActiveCards();
+                                clearInterval(checkAnimation);
+                            }
+                        }, 100);
+
+                        // Clear interval after 5 seconds to avoid memory leak
+                        setTimeout(() => clearInterval(checkAnimation), 5000);
+                    }
                 });
+            });
+
+            // Gestionnaire de clics global : désélectionner les cartes en cliquant n'importe où ailleurs
+            document.addEventListener('click', (e) => {
+                // Vérifier si le clic est en dehors de toutes les cartes
+                const clickedCard = e.target.closest('.glass-card');
+                if (!clickedCard) {
+                    // Le clic n'est pas sur une carte, réinitialiser toutes les cartes actives
+                    resetAllActiveCards();
+                }
+            });
+
+            // Reset active cards when animation naturally resumes (e.g., mouse leaves track)
+            document.querySelectorAll('.marquee-track').forEach(track => {
+                track.addEventListener('animationstart', resetAllActiveCards);
             });
         });
     </script>

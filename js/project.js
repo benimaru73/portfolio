@@ -7,7 +7,7 @@ const projectData = [
         "detailsTitle": "Impact & Innovation",
         "details": [
             { "label": "Architecture \"No-Code\"", "text": "Définition dynamique des parcours (Menu, Input, Request) via plateforme web." },
-            { "label": "Intégration Puissante", "text": "Appels API temps réel et transactions financières (MVola) intégrés." },
+            { "label": "Intégration Puissante", "text": "Appels API temps réel et transactions financières intégrés." },
             { "label": "Multi-Tenancy", "text": "Architecture isolée permettant à plusieurs clients d'opérer sans redéploiement." }
         ],
         "tags": [
