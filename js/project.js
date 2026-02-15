@@ -1,70 +1,104 @@
 const projectData = [
     {
-        title: "Plateforme USSD Générique",
-        iconClass: "devicon-java-plain text-gray-400",
-        description: "Plateforme USSD No-Code permettant aux entreprises de concevoir et déployer des services USSD complexes sans codage spécifique.",
-        subDescription: "Conception d’un moteur USSD dynamique basé sur des graphes de nœuds récursifs, piloté via une interface web, offrant une flexibilité totale dans la définition des parcours utilisateurs.",
-        detailsTitle: "Impact & Innovation",
+        title: "Moteur USSD No-Code",
+        iconClass: "devicon-java-plain text-purple-400",
+        description: "Plateforme SaaS permettant le déploiement instantané de services USSD complexes.",
+        subDescription: "Élimination du besoin de développement spécifique grâce à un moteur de graphes récursifs pilotable via une interface web moderne.",
+        detailsTitle: "Innovation Technique",
         details: [
-            { label: "Architecture No-Code", text: "Définition dynamique des parcours USSD (MENU, INPUT, REQUEST) sans redéploiement." },
-            { label: "Intégration API", text: "Appels API temps réel pour services informatifs et transactions financières (ex : MVola)." },
-            { label: "Multi-Tenancy", text: "Isolation complète des clients avec configuration des parcours et tokens directement en base." }
+            { label: "Moteur Dynamique", text: "Interprétation temps réel de parcours définis en JSON/Base de données." },
+            { label: "Connectivité", text: "Passerelle API universelle pour intégrations bancaires et Telco (MVola, Orange Money)." },
+            { label: "Scalabilité", text: "Architecture isolée multi-locataire (Multi-tenancy)." }
         ],
         tags: [
             { name: "Spring Boot", bgClass: "bg-blue-100 dark:bg-blue-900/30", textClass: "text-blue-700 dark:text-blue-300" },
-            { name: "Next.js", bgClass: "bg-teal-100 dark:bg-teal-900/30", textClass: "text-teal-700 dark:text-teal-300" },
-            { name: "Graph Architecture", bgClass: "bg-purple-100 dark:bg-purple-900/30", textClass: "text-purple-700 dark:text-purple-300" }
+            { name: "Graph Algo", bgClass: "bg-purple-100 dark:bg-purple-900/30", textClass: "text-purple-700 dark:text-purple-300" },
+            { name: "SaaS", bgClass: "bg-teal-100 dark:bg-teal-900/30", textClass: "text-teal-700 dark:text-teal-300" }
         ]
     },
     {
-        title: "ERP Socobis – Module Comptabilité",
-        iconClass: "devicon-java-plain text-gray-400",
-        description: "Création d’un module de comptabilité enterprise destiné à un ERP utilisé en environnement financier critique.",
-        subDescription: "Conception et développement from scratch du module comptabilité Socobis, intégrant des règles métier complexes, des traitements asynchrones et une logique transactionnelle robuste.",
-        detailsTitle: "Réalisations Techniques",
+        title: "Core Banking ERP - Module Comptable",
+        iconClass: "devicon-java-plain text-red-500",
+        description: "Cœur comptable pour un ERP financier critique (Socobis).",
+        subDescription: "Architecture robuste gérant des millions d'écritures avec une intégrité transactionnelle absolue.",
+        detailsTitle: "Défis Relevés",
         details: [
-            { label: "Création From Scratch", text: "Définition complète de la logique métier comptable et des flux transactionnels." },
-            { label: "Architecture Asynchrone", text: "Traitements financiers optimisés pour la performance et la fiabilité." },
-            { label: "Interopérabilité", text: "Intégration avec les systèmes existants garantissant la cohérence des données." }
+            { label: "Performance", text: "Traitement asynchrone des écritures de masse." },
+            { label: "Conformité", text: "Implémentation stricte des normes comptables (PCG)." },
+            { label: "Fiabilité", text: "Zéro perte de données grâce aux transactions ACID distribuées." }
         ],
         tags: [
             { name: "Java EE", bgClass: "bg-red-100 dark:bg-red-900/30", textClass: "text-red-700 dark:text-red-300" },
-            { name: "Oracle", bgClass: "bg-gray-100 dark:bg-gray-700", textClass: "text-gray-700 dark:text-gray-300" },
-            { name: "Enterprise Systems", bgClass: "bg-blue-100 dark:bg-blue-900/30", textClass: "text-blue-700 dark:text-blue-300" }
+            { name: "Oracle PL/SQL", bgClass: "bg-gray-100 dark:bg-gray-700", textClass: "text-gray-700 dark:text-gray-300" },
+            { name: "Fintech", bgClass: "bg-blue-100 dark:bg-blue-900/30", textClass: "text-blue-700 dark:text-blue-300" }
         ]
     },
     {
-        title: "Système National de Gestion des Cartes de Séjour",
-        iconClass: "devicon-java-plain text-gray-400",
-        description: "Remplacement complet du système existant du Ministère de l’Intérieur pour la gestion des cartes de séjour.",
-        subDescription: "Analyse du système en place et conception d’une nouvelle solution nationale sécurisée couvrant l’ensemble du cycle de traitement des demandes administratives.",
+        title: "Système National Cartes de Séjour",
+        iconClass: "devicon-java-plain text-green-500",
+        description: "Solution e-Gouvernement pour le Ministère de l’Intérieur.",
+        subDescription: "Modernisation de l'administration publique par la digitalisation sécurisée du cycle de vie des titres de séjour.",
         detailsTitle: "Modules Critiques",
         details: [
-            { label: "Workflow National", text: "Gestion complète des demandes : soumission, validation et suivi administratif." },
-            { label: "Données Sécurisées", text: "Centralisation et sécurisation des informations des demandeurs à l’échelle nationale." },
-            { label: "Gestion Financière", text: "Automatisation du suivi des quittances et paiements administratifs." }
+            { label: "Sécurité", text: "Chiffrement et traçabilité des données sensibles." },
+            { label: "Workflow", text: "Orchestration des étapes de validation administrative." },
+            { label: "Reporting", text: "Tableaux de bord temps réel pour le suivi des recettes." }
         ],
         tags: [
             { name: "Java EE", bgClass: "bg-red-100 dark:bg-red-900/30", textClass: "text-red-700 dark:text-red-300" },
             { name: "PostgreSQL", bgClass: "bg-blue-100 dark:bg-blue-900/30", textClass: "text-blue-700 dark:text-blue-300" },
-            { name: "Public Sector", bgClass: "bg-green-100 dark:bg-green-900/30", textClass: "text-green-700 dark:text-green-300" }
+            { name: "GovTech", bgClass: "bg-green-100 dark:bg-green-900/30", textClass: "text-green-700 dark:text-green-300" }
         ]
     },
     {
-        title: "ERP Charcuterie Lewis – Module RH",
-        iconClass: "devicon-java-plain text-gray-400",
-        description: "Développement d’un module RH intégré à un ERP métier pour une entreprise agroalimentaire.",
-        subDescription: "Digitalisation complète des processus RH avec mise en place de workflows structurés et centralisation sécurisée des données du personnel.",
-        detailsTitle: "Fonctionnalités Clés",
+        title: "ERP Agro-Industriel - RH",
+        iconClass: "devicon-java-plain text-yellow-500",
+        description: "Digitalisation des processus RH pour l'industrie (Lewis).",
+        subDescription: "Centralisation des données du personnel et automatisation de la paie dans un contexte industriel multi-sites.",
+        detailsTitle: "Fonctionnalités",
         details: [
-            { label: "Gestion RH", text: "Suivi des employés, gestion de la paie et des congés." },
-            { label: "Workflow RH", text: "Recrutement, validation et suivi administratif des employés." },
-            { label: "Architecture ERP", text: "Participation à l’architecture globale et à la logique métier critique." }
+            { label: "Paie", text: "Moteur de calcul paramétrable complexe." },
+            { label: "Planification", text: "Gestion des temps et des activités." },
+            { label: "Intégration", text: "Liaison native avec les modules de production." }
         ],
         tags: [
             { name: "Java EE", bgClass: "bg-red-100 dark:bg-red-900/30", textClass: "text-red-700 dark:text-red-300" },
             { name: "Oracle", bgClass: "bg-gray-100 dark:bg-gray-700", textClass: "text-gray-700 dark:text-gray-300" },
-            { name: "ERP", bgClass: "bg-purple-100 dark:bg-purple-900/30", textClass: "text-purple-700 dark:text-purple-300" }
+            { name: "Industrial ERP", bgClass: "bg-purple-100 dark:bg-purple-900/30", textClass: "text-purple-700 dark:text-purple-300" }
+        ]
+    },
+    {
+        title: "Smart Tender - Fonds Routier",
+        iconClass: "devicon-java-plain text-blue-500",
+        description: "Système d'aide à la décision pour appels d'offres publics.",
+        subDescription: "Algorithmes d'évaluation automatique garantissant l'équité et la transparence dans l'attribution des marchés BTP.",
+        detailsTitle: "Points Forts",
+        details: [
+            { label: "Auditabilité", text: "Logs inaltérables de chaque étape de décision." },
+            { label: "Scoring", text: "Calcul automatique des notes techniques et financières." },
+            { label: "Processus", text: "Workflow de validation multi-niveaux." }
+        ],
+        tags: [
+            { name: "Java EE", bgClass: "bg-red-100 dark:bg-red-900/30", textClass: "text-red-700 dark:text-red-300" },
+            { name: "PostgreSQL", bgClass: "bg-blue-100 dark:bg-blue-900/30", textClass: "text-blue-700 dark:text-blue-300" },
+            { name: "Decision Support", bgClass: "bg-green-100 dark:bg-green-900/30", textClass: "text-green-700 dark:text-green-300" }
+        ]
+    },
+    {
+        title: "Gestion Portuaire (SPAT)",
+        iconClass: "devicon-java-plain text-orange-500",
+        description: "Système comptable métier pour infrastructure critique.",
+        subDescription: "Solution haute performance adaptée aux spécificités du trafic maritime et de la facturation portuaire.",
+        detailsTitle: "Spécificités",
+        details: [
+            { label: "Métier", text: "Adaptation aux règles de facturation maritime." },
+            { label: "Legacy", text: "Intégration transparente avec l'existant." },
+            { label: "Volume", text: "Gestion de forts volumes transactionnels." }
+        ],
+        tags: [
+            { name: "Java EE", bgClass: "bg-red-100 dark:bg-red-900/30", textClass: "text-red-700 dark:text-red-300" },
+            { name: "Oracle", bgClass: "bg-red-100 dark:bg-red-900/30", textClass: "text-red-700 dark:text-red-300" },
+            { name: "Logistics", bgClass: "bg-yellow-100 dark:bg-yellow-900/30", textClass: "text-yellow-700 dark:text-yellow-300" }
         ]
     }
 ];

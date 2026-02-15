@@ -5,7 +5,8 @@ const technologiesData = [
         "skills": [
             { "name": "Node.js", "iconClass": "devicon-nodejs-plain text-green-500" },
             { "name": "Python", "iconClass": "devicon-python-plain text-yellow-500" },
-            { "name": "Java", "iconClass": "devicon-java-plain" },
+            { "name": "Java 8", "iconClass": "devicon-java-plain text-red-600" },
+            { "name": "Java 17", "iconClass": "devicon-java-plain text-orange-500" },
             { "name": "Spring Boot", "iconClass": "devicon-spring-original text-green-600" }
         ]
     },
@@ -40,4 +41,3 @@ const technologiesData = [
         ]
     }
 ];
-
