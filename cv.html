@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Fitahiana Leong Eli Mathieu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .no-print {
+                display: none;
+            }
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Bouton d'impression (caché à l'impression) -->
+    <div class="no-print fixed top-4 right-4 z-50">
+        <button onclick="window.print()" class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 transition-all">
+            📄 Télécharger PDF
+        </button>
+    </div>
+
+    <!-- CV Container - Format A4 -->
+    <div class="max-w-[210mm] mx-auto bg-white shadow-2xl my-8" style="min-height: 297mm;">
+
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-12 py-10">
+            <div class="flex items-center gap-8">
+                <!-- Photo de profil -->
+                <div class="flex-shrink-0">
+                    <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-2xl">
+                        <img src="inc/fitahianaLeong.jpeg" alt="Fitahiana Leong" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Fitahiana+Leong&background=fff&color=3b82f6&size=256'">
+                    </div>
+                </div>
+
+                <!-- Informations -->
+                <div class="flex-1">
+                    <h1 class="text-4xl font-bold mb-2">Fitahiana Leong Eli Mathieu</h1>
+                    <h2 class="text-xl font-light mb-6">Développeur Full Stack</h2>
+
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                            </svg>
+                            <span>fitahinaleong@gmail.com</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                            </svg>
+                            <span>+261 34 17 069 88</span>
+                        </div>
+                        <div class="flex items-center gap-2 col-span-2">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>linkedin.com/in/fitahiana-leong-b32289334</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="px-12 py-8">
+
+            <!-- Profil -->
+            <section class="mb-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">À PROPOS</h3>
+                <p class="text-gray-700 leading-relaxed">
+                    <span class="font-semibold">Je pense résolution. Je parle solutions.</span> L'ingénierie logicielle en est l'expression.
+                    Développeur Full Stack passionné, je conçois des systèmes robustes et scalables qui résolvent des problématiques métier complexes.
+                    Depuis 2025, j'ai contribué à plusieurs projets d'envergure nationale et industrielle, alliant expertise technique
+                    (Java EE, Spring Boot, React/Next.js) et compréhension fine des enjeux business. Spécialisé dans l'architecture
+                    d'applications critiques (Fintech, GovTech, ERP), je m'engage à livrer des solutions performantes, maintenables et
+                    centrées sur l'impact utilisateur.
+                </p>
+            </section>
+
+            <!-- Expérience Professionnelle -->
+            <section class="mb-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">EXPÉRIENCE PROFESSIONNELLE</h3>
+
+                <!-- BICI -->
+                <div class="mb-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h4 class="text-lg font-bold text-gray-800">Développeur Full Stack</h4>
+                            <p class="text-blue-600 font-semibold">BICI</p>
+                        </div>
+                        <span class="text-sm text-gray-600 font-medium">Sept. 2025 – Présent</span>
+                    </div>
+                    <p class="text-gray-700 text-sm leading-relaxed mb-2">
+                        Pilotage technique et conception de solutions fintech à fort impact. Supervision de l'architecture logicielle
+                        et garant de la qualité du code pour des systèmes critiques.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded">Java EE</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded">Oracle</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded">PostgreSQL</span>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-800 text-xs font-semibold rounded">Fintech</span>
+                    </div>
+                </div>
+
+                <!-- IBONIA -->
+                <div class="mb-6">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h4 class="text-lg font-bold text-gray-800">Développeur Full Stack</h4>
+                            <p class="text-teal-600 font-semibold">IBONIA</p>
+                        </div>
+                        <span class="text-sm text-gray-600 font-medium">Mai 2025 – Sept. 2025</span>
+                    </div>
+                    <p class="text-gray-700 text-sm leading-relaxed mb-2">
+                        Création d'une plateforme USSD No-Code innovante. Transformation de la logique métier complexe en interface
+                        graphique intuitive, permettant le déploiement rapide de services mobiles.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-teal-100 text-teal-800 text-xs font-semibold rounded">Spring Boot</span>
+                        <span class="px-3 py-1 bg-teal-100 text-teal-800 text-xs font-semibold rounded">Next.js</span>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-800 text-xs font-semibold rounded">USSD</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projets Clés -->
+            <section class="mb-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">PROJETS MAJEURS</h3>
+
+                <div class="space-y-4">
+                    <!-- Projet 1 -->
+                    <div class="border-l-4 border-blue-600 pl-4">
+                        <h4 class="font-bold text-gray-800">Système National d'Identité & Transport (GovTech)</h4>
+                        <p class="text-sm text-gray-600 mb-1">Cartes Grises & Permis Biométriques (ATT - 2026)</p>
+                        <p class="text-sm text-gray-700">
+                            Modernisation de l'administration publique malgache. Centralisation des données biométriques,
+                            orchestration des workflows de délivrance des titres sécurisés au niveau national.
+                        </p>
+                        <p class="text-xs text-gray-500 mt-1">Java EE • PostgreSQL • Architecture Asynchrone</p>
+                    </div>
+
+                    <!-- Projet 2 -->
+                    <div class="border-l-4 border-red-600 pl-4">
+                        <h4 class="font-bold text-gray-800">ERP Socobis - Core Comptabilité</h4>
+                        <p class="text-sm text-gray-600 mb-1">Refonte complète du système financier (2025)</p>
+                        <p class="text-sm text-gray-700">
+                            Développement from scratch du cœur comptable critique. Architecture asynchrone pour l'ingestion massive
+                            de données avec validation comptable stricte.
+                        </p>
+                        <p class="text-xs text-gray-500 mt-1">Java EE • Oracle DB • Enterprise Architecture</p>
+                    </div>
+
+                    <!-- Projet 3 -->
+                    <div class="border-l-4 border-purple-600 pl-4">
+                        <h4 class="font-bold text-gray-800">Plateforme USSD No-Code Multi-Client</h4>
+                        <p class="text-sm text-gray-600 mb-1">Moteur USSD dynamique pour IBONIA</p>
+                        <p class="text-sm text-gray-700">
+                            Conception d'une architecture Data-Driven permettant le déploiement instantané de services mobiles
+                            sans redéploiement technique. Multi-tenancy avec isolation complète.
+                        </p>
+                        <p class="text-xs text-gray-500 mt-1">Spring Boot • Next.js • Architecture Recursive</p>
+                    </div>
+
+                    <!-- Projet 4 -->
+                    <div class="border-l-4 border-yellow-600 pl-4">
+                        <h4 class="font-bold text-gray-800">ERP RH & Paie - Lewis Industry</h4>
+                        <p class="text-sm text-gray-600 mb-1">Digitalisation intégrale des processus RH (2025)</p>
+                        <p class="text-sm text-gray-700">
+                            Automatisation de la paie et gestion du capital humain. Moteur de calcul dynamique multicritères
+                            et dossier employé numérique centralisé.
+                        </p>
+                        <p class="text-xs text-gray-500 mt-1">Java EE • Oracle • Workflow Automation</p>
+                    </div>
+
+                    <!-- Projet 5 -->
+                    <div class="border-l-4 border-green-600 pl-4">
+                        <h4 class="font-bold text-gray-800">Smart Tender - Fonds Routier</h4>
+                        <p class="text-sm text-gray-600 mb-1">Système d'aide à la décision pour marchés publics (2025)</p>
+                        <p class="text-sm text-gray-700">
+                            Algorithmes de scoring avancés pour garantir l'équité des attributions.
+                            Architecture asynchrone pour traitements lourds et transparence totale.
+                        </p>
+                        <p class="text-xs text-gray-500 mt-1">Java EE • PostgreSQL • Async Processing</p>
+                    </div>
+
+                    <!-- Projet 6 -->
+                    <div class="border-l-4 border-orange-600 pl-4">
+                        <h4 class="font-bold text-gray-800">Gestion Portuaire - SPAT</h4>
+                        <p class="text-sm text-gray-600 mb-1">Système financier critique - Port de Toamasina</p>
+                        <p class="text-sm text-gray-700">
+                            Maintenance et évolution du cœur comptable depuis 2022. Gestion de flux financiers massifs
+                            dans un environnement haute disponibilité (zéro downtime).
+                        </p>
+                        <p class="text-xs text-gray-500 mt-1">Java EE • Oracle • Legacy Integration</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Compétences Techniques -->
+            <section class="mb-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">COMPÉTENCES TECHNIQUES</h3>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <!-- Backend -->
+                    <div>
+                        <h4 class="font-bold text-blue-600 mb-2">Backend Development</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Java 8</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Java 17</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Spring Boot</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Node.js</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Python</span>
+                        </div>
+                    </div>
+
+                    <!-- Frontend -->
+                    <div>
+                        <h4 class="font-bold text-teal-600 mb-2">Web Development</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">JavaScript</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">TypeScript</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">React</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Next.js</span>
+                        </div>
+                    </div>
+
+                    <!-- Database -->
+                    <div>
+                        <h4 class="font-bold text-orange-600 mb-2">Bases de Données</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">PostgreSQL</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Oracle</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">MySQL</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">MongoDB</span>
+                        </div>
+                    </div>
+
+                    <!-- DevOps -->
+                    <div>
+                        <h4 class="font-bold text-purple-600 mb-2">DevOps & Outils</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Docker</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Git</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">GitLab CI/CD</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">GitHub</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Langues -->
+            <section class="mb-4">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">LANGUES</h3>
+                <div class="grid grid-cols-3 gap-4">
+                    <div>
+                        <p class="font-semibold text-gray-800">Français</p>
+                        <p class="text-sm text-gray-600">Courant</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-gray-800">Malgache</p>
+                        <p class="text-sm text-gray-600">Natif</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-gray-800">Anglais</p>
+                        <p class="text-sm text-gray-600">Professionnel</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="bg-gray-100 px-12 py-4 text-center text-xs text-gray-600">
+            <p>Antananarivo, Madagascar • Portfolio: fitahianaleong.dev</p>
+        </div>
+
+    </div>
+
+    <script>
+        // Auto-print on load when accessed with ?print parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('print') === 'true') {
+            window.onload = () => {
+                setTimeout(() => window.print(), 500);
+            };
+        }
+    </script>
+</body>
+</html>
+
