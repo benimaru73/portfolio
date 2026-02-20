@@ -8,46 +8,10 @@
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <script src="js/translations.js"></script>
     <style>
-        @page {
-            size: A4;
-            margin: 0;
-        }
-
-        /* Masquer les boutons lors de l'impression */
-        .no-print {
-            display: block;
-        }
-
+        @page { size: A4; margin: 0; }
         @media print {
-            body {
-                margin: 0;
-                padding: 0;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            /* Force hide no-print elements */
-            .no-print,
-            .no-print * {
-                display: none !important;
-                visibility: hidden !important;
-                opacity: 0 !important;
-                height: 0 !important;
-                width: 0 !important;
-                max-height: 0 !important;
-                max-width: 0 !important;
-                overflow: hidden !important;
-                position: absolute !important;
-                left: -9999px !important;
-                top: -9999px !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                border: none !important;
-            }
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            .no-print { display: none !important; }
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
     </style>
 </head>
@@ -323,7 +287,7 @@
                             <p class="text-blue-600 font-semibold">ITU University</p>
                         </div>
                         <div class="text-right">
-                            <span id="formation-m1-period" class="text-sm text-gray-600 font-medium">En cours</span>
+                            <span id="formation-m1-period" class="text-sm text-gray-600 font-medium">2025 - 2026</span>
                             <span id="formation-m1-badge" class="inline-block ml-2 px-2 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded">En cours</span>
                         </div>
                     </div>
@@ -469,7 +433,7 @@
             // Update formation
             document.querySelector('#formation-m1-degree').textContent = t.formation.m1.degree;
             document.querySelector('#formation-m1-period').textContent = t.formation.m1.period;
-            document.querySelector('#formation-m1-badge').textContent = t.formation.m1.period;
+            document.querySelector('#formation-m1-badge').textContent = t.formation.m1.status;
 
             document.querySelector('#formation-licence-degree').textContent = t.formation.licence.degree;
             document.querySelector('#formation-licence-period').textContent = t.formation.licence.period;
