@@ -13,36 +13,17 @@
             margin: 0;
         }
 
-        /* Allow text selection and copying everywhere */
-        * {
-            user-select: text !important;
-            -webkit-user-select: text !important;
-            -moz-user-select: text !important;
-            -ms-user-select: text !important;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-        }
-
-        /* Masquer les boutons à l'écran et impression */
+        /* Masquer les boutons lors de l'impression */
         .no-print {
             display: block;
         }
 
         @media print {
-            /* Reset complet pour impression */
-            * {
-                box-sizing: border-box;
-            }
-
             body {
-                margin: 0 !important;
-                padding: 0 !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                color-adjust: exact !important;
+                margin: 0;
+                padding: 0;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
             }
 
             /* Force hide no-print elements */
@@ -53,21 +34,20 @@
                 opacity: 0 !important;
                 height: 0 !important;
                 width: 0 !important;
+                max-height: 0 !important;
+                max-width: 0 !important;
+                overflow: hidden !important;
                 position: absolute !important;
                 left: -9999px !important;
+                top: -9999px !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                border: none !important;
             }
+        }
 
-            /* Pas de coupure de page dans les sections */
-            section, .border-l-4, div {
-                page-break-inside: avoid !important;
-                break-inside: avoid !important;
-            }
-
-            /* Espacement cohérent */
-            h1, h2, h3, h4, h5, h6 {
-                page-break-after: avoid !important;
-                break-after: avoid !important;
-            }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
         }
     </style>
 </head>
@@ -343,7 +323,7 @@
                             <p class="text-blue-600 font-semibold">ITU University</p>
                         </div>
                         <div class="text-right">
-                            <span id="formation-m1-period" class="text-sm text-gray-600 font-medium">2025 - 2026</span>
+                            <span id="formation-m1-period" class="text-sm text-gray-600 font-medium">En cours</span>
                             <span id="formation-m1-badge" class="inline-block ml-2 px-2 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded">En cours</span>
                         </div>
                     </div>
@@ -382,7 +362,7 @@
 
         <!-- Footer -->
         <div class="bg-gray-100 px-12 py-4 text-center text-xs text-gray-600">
-            <p id="footer-text">Antananarivo, Madagascar • Portfolio: fitahianaleong.dev</p>
+            <p id="footer-text">Antananarivo, Madagascar •</p>
         </div>
 
     </div>
@@ -489,7 +469,7 @@
             // Update formation
             document.querySelector('#formation-m1-degree').textContent = t.formation.m1.degree;
             document.querySelector('#formation-m1-period').textContent = t.formation.m1.period;
-            document.querySelector('#formation-m1-badge').textContent = t.formation.m1.status;
+            document.querySelector('#formation-m1-badge').textContent = t.formation.m1.period;
 
             document.querySelector('#formation-licence-degree').textContent = t.formation.licence.degree;
             document.querySelector('#formation-licence-period').textContent = t.formation.licence.period;
