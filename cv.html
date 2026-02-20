@@ -6,31 +6,97 @@
     <title>CV - Fitahiana Leong Eli Mathieu</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <script src="js/translations.js"></script>
     <style>
         @page {
             size: A4;
             margin: 0;
         }
-        @media print {
-            body {
-                margin: 0;
-                padding: 0;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .no-print {
-                display: none;
-            }
+
+        /* Allow text selection and copying everywhere */
+        * {
+            user-select: text !important;
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
         }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Masquer les boutons à l'écran et impression */
+        .no-print {
+            display: block;
+        }
+
+        @media print {
+            /* Reset complet pour impression */
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0 !important;
+                padding: 0 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            /* Force hide no-print elements */
+            .no-print,
+            .no-print * {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                height: 0 !important;
+                width: 0 !important;
+                position: absolute !important;
+                left: -9999px !important;
+            }
+
+            /* Pas de coupure de page dans les sections */
+            section, .border-l-4, div {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+
+            /* Espacement cohérent */
+            h1, h2, h3, h4, h5, h6 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+            }
         }
     </style>
 </head>
 <body class="bg-gray-50">
-    <!-- Bouton d'impression (caché à l'impression) -->
-    <div class="no-print fixed top-4 right-4 z-50">
-        <button onclick="window.print()" class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 transition-all">
+    <!-- Boutons (cachés à l'impression) -->
+    <div class="no-print fixed top-4 right-4 z-50 flex gap-3">
+        <!-- Language Dropdown -->
+        <div class="relative">
+            <button id="lang-dropdown-btn" onclick="toggleLangDropdown()" class="px-4 py-3 bg-white rounded-lg shadow-lg hover:bg-gray-50 transition-all flex items-center gap-2">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M7 2a1 1 0 011 1v1h3a1 1 0 110 2H9.578a18.87 18.87 0 01-1.724 4.78c.29.354.596.696.914 1.026a1 1 0 11-1.44 1.389c-.188-.196-.373-.396-.554-.6a19.098 19.098 0 01-3.107 3.567 1 1 0 01-1.334-1.49 17.087 17.087 0 003.13-3.733 18.992 18.992 0 01-1.487-2.494 1 1 0 111.79-.89c.234.47.489.928.764 1.372.417-.934.752-1.913.997-2.927H3a1 1 0 110-2h3V3a1 1 0 011-1zm6 6a1 1 0 01.894.553l2.991 5.982a.869.869 0 01.02.037l.99 1.98a1 1 0 11-1.79.895L15.383 16h-4.764l-.724 1.447a1 1 0 11-1.788-.894l.99-1.98.019-.038 2.99-5.982A1 1 0 0113 8zm-1.382 6h2.764L13 11.236 11.618 14z" clip-rule="evenodd"></path>
+                </svg>
+                <span id="lang-display" class="text-sm font-bold">FR</span>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+            </button>
+            <div id="lang-dropdown" class="hidden absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-lg overflow-hidden">
+                <button onclick="selectLanguage('fr')" class="w-full px-4 py-3 text-sm font-bold text-left hover:bg-gray-100 transition-all flex items-center justify-between">
+                    Français
+                    <span id="check-fr" class="text-blue-600">✓</span>
+                </button>
+                <button onclick="selectLanguage('en')" class="w-full px-4 py-3 text-sm font-bold text-left hover:bg-gray-100 transition-all flex items-center justify-between">
+                    English
+                    <span id="check-en" class="hidden text-blue-600">✓</span>
+                </button>
+            </div>
+        </div>
+        <button onclick="window.print()" id="cv-download-btn" class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 transition-all">
             📄 Télécharger PDF
         </button>
     </div>
@@ -51,7 +117,7 @@
                 <!-- Informations -->
                 <div class="flex-1">
                     <h1 class="text-4xl font-bold mb-2">Fitahiana Leong Eli Mathieu</h1>
-                    <h2 class="text-xl font-light mb-6">Développeur Full Stack</h2>
+                    <h2 id="cv-role" class="text-xl font-light mb-6">Développeur Full Stack</h2>
 
                     <div class="grid grid-cols-2 gap-4 text-sm">
                         <div class="flex items-center gap-2">
@@ -71,7 +137,7 @@
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                             </svg>
-                            <span>linkedin.com/in/fitahiana-leong-b32289334</span>
+                            <a href="https://linkedin.com/in/fitahiana-leong-b32289334" target="_blank" class="hover:underline">linkedin:Fitahiana leong</a>
                         </div>
                     </div>
                 </div>
@@ -83,8 +149,8 @@
 
             <!-- Profil -->
             <section class="mb-8">
-                <h3 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">À PROPOS</h3>
-                <p class="text-gray-700 leading-relaxed">
+                <h3 id="about-title" class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">À PROPOS</h3>
+                <p id="about-intro" class="text-gray-700 leading-relaxed">
                     <span class="font-semibold">Je pense résolution. Je parle solutions.</span> L'ingénierie logicielle en est l'expression.
                     Développeur Full Stack passionné, je conçois des systèmes robustes et scalables qui résolvent des problématiques métier complexes.
                     Depuis 2025, j'ai contribué à plusieurs projets d'envergure nationale et industrielle, alliant expertise technique
@@ -96,18 +162,18 @@
 
             <!-- Expérience Professionnelle -->
             <section class="mb-8">
-                <h3 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">EXPÉRIENCE PROFESSIONNELLE</h3>
+                <h3 id="experience-title" class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">EXPÉRIENCE PROFESSIONNELLE</h3>
 
                 <!-- BICI -->
                 <div class="mb-6">
                     <div class="flex justify-between items-start mb-2">
                         <div>
-                            <h4 class="text-lg font-bold text-gray-800">Développeur Full Stack</h4>
+                            <h4 id="exp-bici-role" class="text-lg font-bold text-gray-800">Développeur Full Stack</h4>
                             <p class="text-blue-600 font-semibold">BICI</p>
                         </div>
-                        <span class="text-sm text-gray-600 font-medium">Sept. 2025 – Présent</span>
+                        <span id="exp-bici-period" class="text-sm text-gray-600 font-medium">Sept. 2025 – Présent</span>
                     </div>
-                    <p class="text-gray-700 text-sm leading-relaxed mb-2">
+                    <p id="exp-bici-desc" class="text-gray-700 text-sm leading-relaxed mb-2">
                         Pilotage technique et conception de solutions fintech à fort impact. Supervision de l'architecture logicielle
                         et garant de la qualité du code pour des systèmes critiques.
                     </p>
@@ -123,12 +189,12 @@
                 <div class="mb-6">
                     <div class="flex justify-between items-start mb-2">
                         <div>
-                            <h4 class="text-lg font-bold text-gray-800">Développeur Full Stack</h4>
+                            <h4 id="exp-ibonia-role" class="text-lg font-bold text-gray-800">Développeur Full Stack</h4>
                             <p class="text-teal-600 font-semibold">IBONIA</p>
                         </div>
-                        <span class="text-sm text-gray-600 font-medium">Mai 2025 – Sept. 2025</span>
+                        <span id="exp-ibonia-period" class="text-sm text-gray-600 font-medium">Mai 2025 – Sept. 2025</span>
                     </div>
-                    <p class="text-gray-700 text-sm leading-relaxed mb-2">
+                    <p id="exp-ibonia-desc" class="text-gray-700 text-sm leading-relaxed mb-2">
                         Création d'une plateforme USSD No-Code innovante. Transformation de la logique métier complexe en interface
                         graphique intuitive, permettant le déploiement rapide de services mobiles.
                     </p>
@@ -142,14 +208,14 @@
 
             <!-- Projets Clés -->
             <section class="mb-8">
-                <h3 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">PROJETS MAJEURS</h3>
+                <h3 id="projects-title" class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">PROJETS MAJEURS</h3>
 
                 <div class="space-y-4">
                     <!-- Projet 1 -->
                     <div class="border-l-4 border-blue-600 pl-4">
-                        <h4 class="font-bold text-gray-800">Système National d'Identité & Transport (GovTech)</h4>
-                        <p class="text-sm text-gray-600 mb-1">Cartes Grises & Permis Biométriques (ATT - 2026)</p>
-                        <p class="text-sm text-gray-700">
+                        <h4 id="proj-att-title" class="font-bold text-gray-800">Système National d'Identité & Transport (GovTech)</h4>
+                        <p id="proj-att-subtitle" class="text-sm text-gray-600 mb-1">Cartes Grises & Permis Biométriques (ATT - 2026)</p>
+                        <p id="proj-att-desc" class="text-sm text-gray-700">
                             Modernisation de l'administration publique malgache. Centralisation des données biométriques,
                             orchestration des workflows de délivrance des titres sécurisés au niveau national.
                         </p>
@@ -158,9 +224,9 @@
 
                     <!-- Projet 2 -->
                     <div class="border-l-4 border-red-600 pl-4">
-                        <h4 class="font-bold text-gray-800">ERP Socobis - Core Comptabilité</h4>
-                        <p class="text-sm text-gray-600 mb-1">Refonte complète du système financier (2025)</p>
-                        <p class="text-sm text-gray-700">
+                        <h4 id="proj-socobis-title" class="font-bold text-gray-800">ERP Socobis - Core Comptabilité</h4>
+                        <p id="proj-socobis-subtitle" class="text-sm text-gray-600 mb-1">Refonte complète du système financier (2025)</p>
+                        <p id="proj-socobis-desc" class="text-sm text-gray-700">
                             Développement from scratch du cœur comptable critique. Architecture asynchrone pour l'ingestion massive
                             de données avec validation comptable stricte.
                         </p>
@@ -169,9 +235,9 @@
 
                     <!-- Projet 3 -->
                     <div class="border-l-4 border-purple-600 pl-4">
-                        <h4 class="font-bold text-gray-800">Plateforme USSD No-Code Multi-Client</h4>
-                        <p class="text-sm text-gray-600 mb-1">Moteur USSD dynamique pour IBONIA</p>
-                        <p class="text-sm text-gray-700">
+                        <h4 id="proj-ussd-title" class="font-bold text-gray-800">Plateforme USSD No-Code Multi-Client</h4>
+                        <p id="proj-ussd-subtitle" class="text-sm text-gray-600 mb-1">Moteur USSD dynamique pour IBONIA</p>
+                        <p id="proj-ussd-desc" class="text-sm text-gray-700">
                             Conception d'une architecture Data-Driven permettant le déploiement instantané de services mobiles
                             sans redéploiement technique. Multi-tenancy avec isolation complète.
                         </p>
@@ -180,9 +246,9 @@
 
                     <!-- Projet 4 -->
                     <div class="border-l-4 border-yellow-600 pl-4">
-                        <h4 class="font-bold text-gray-800">ERP RH & Paie - Lewis Industry</h4>
-                        <p class="text-sm text-gray-600 mb-1">Digitalisation intégrale des processus RH (2025)</p>
-                        <p class="text-sm text-gray-700">
+                        <h4 id="proj-lewis-title" class="font-bold text-gray-800">ERP RH & Paie - Lewis Industry</h4>
+                        <p id="proj-lewis-subtitle" class="text-sm text-gray-600 mb-1">Digitalisation intégrale des processus RH (2025)</p>
+                        <p id="proj-lewis-desc" class="text-sm text-gray-700">
                             Automatisation de la paie et gestion du capital humain. Moteur de calcul dynamique multicritères
                             et dossier employé numérique centralisé.
                         </p>
@@ -191,9 +257,9 @@
 
                     <!-- Projet 5 -->
                     <div class="border-l-4 border-green-600 pl-4">
-                        <h4 class="font-bold text-gray-800">Smart Tender - Fonds Routier</h4>
-                        <p class="text-sm text-gray-600 mb-1">Système d'aide à la décision pour marchés publics (2025)</p>
-                        <p class="text-sm text-gray-700">
+                        <h4 id="proj-tender-title" class="font-bold text-gray-800">Smart Tender - Fonds Routier</h4>
+                        <p id="proj-tender-subtitle" class="text-sm text-gray-600 mb-1">Système d'aide à la décision pour marchés publics (2025)</p>
+                        <p id="proj-tender-desc" class="text-sm text-gray-700">
                             Algorithmes de scoring avancés pour garantir l'équité des attributions.
                             Architecture asynchrone pour traitements lourds et transparence totale.
                         </p>
@@ -202,9 +268,9 @@
 
                     <!-- Projet 6 -->
                     <div class="border-l-4 border-orange-600 pl-4">
-                        <h4 class="font-bold text-gray-800">Gestion Portuaire - SPAT</h4>
-                        <p class="text-sm text-gray-600 mb-1">Système financier critique - Port de Toamasina</p>
-                        <p class="text-sm text-gray-700">
+                        <h4 id="proj-spat-title" class="font-bold text-gray-800">Gestion Portuaire - SPAT</h4>
+                        <p id="proj-spat-subtitle" class="text-sm text-gray-600 mb-1">Système financier critique - Port de Toamasina</p>
+                        <p id="proj-spat-desc" class="text-sm text-gray-700">
                             Maintenance et évolution du cœur comptable depuis 2022. Gestion de flux financiers massifs
                             dans un environnement haute disponibilité (zéro downtime).
                         </p>
@@ -215,12 +281,12 @@
 
             <!-- Compétences Techniques -->
             <section class="mb-8">
-                <h3 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">COMPÉTENCES TECHNIQUES</h3>
+                <h3 id="skills-title" class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">COMPÉTENCES TECHNIQUES</h3>
 
                 <div class="grid grid-cols-2 gap-4">
                     <!-- Backend -->
                     <div>
-                        <h4 class="font-bold text-blue-600 mb-2">Backend Development</h4>
+                        <h4 id="skills-backend" class="font-bold text-blue-600 mb-2">Backend Development</h4>
                         <div class="flex flex-wrap gap-2">
                             <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Java 8</span>
                             <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Java 17</span>
@@ -232,7 +298,7 @@
 
                     <!-- Frontend -->
                     <div>
-                        <h4 class="font-bold text-teal-600 mb-2">Web Development</h4>
+                        <h4 id="skills-frontend" class="font-bold text-teal-600 mb-2">Web Development</h4>
                         <div class="flex flex-wrap gap-2">
                             <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">JavaScript</span>
                             <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">TypeScript</span>
@@ -243,7 +309,7 @@
 
                     <!-- Database -->
                     <div>
-                        <h4 class="font-bold text-orange-600 mb-2">Bases de Données</h4>
+                        <h4 id="skills-database" class="font-bold text-orange-600 mb-2">Bases de Données</h4>
                         <div class="flex flex-wrap gap-2">
                             <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">PostgreSQL</span>
                             <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Oracle</span>
@@ -254,7 +320,7 @@
 
                     <!-- DevOps -->
                     <div>
-                        <h4 class="font-bold text-purple-600 mb-2">DevOps & Outils</h4>
+                        <h4 id="skills-devops" class="font-bold text-purple-600 mb-2">DevOps & Outils</h4>
                         <div class="flex flex-wrap gap-2">
                             <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Docker</span>
                             <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Git</span>
@@ -265,21 +331,49 @@
                 </div>
             </section>
 
+            <!-- Formation -->
+            <section class="mb-8">
+                <h3 id="formation-title" class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">FORMATION</h3>
+
+                <div class="space-y-4">
+                    <!-- M1 -->
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 id="formation-m1-degree" class="font-bold text-gray-800">Master 1 (M1) - Informatique</h4>
+                            <p class="text-blue-600 font-semibold">ITU University</p>
+                        </div>
+                        <div class="text-right">
+                            <span id="formation-m1-period" class="text-sm text-gray-600 font-medium">2025 - 2026</span>
+                            <span id="formation-m1-badge" class="inline-block ml-2 px-2 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded">En cours</span>
+                        </div>
+                    </div>
+
+                    <!-- Licence -->
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 id="formation-licence-degree" class="font-bold text-gray-800">Licence Développement (L1-L3)</h4>
+                            <p class="text-blue-600 font-semibold">ITU University</p>
+                        </div>
+                        <span id="formation-licence-period" class="text-sm text-gray-600 font-medium">2022 - 2025</span>
+                    </div>
+                </div>
+            </section>
+
             <!-- Langues -->
             <section class="mb-4">
-                <h3 class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">LANGUES</h3>
+                <h3 id="languages-title" class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">LANGUES</h3>
                 <div class="grid grid-cols-3 gap-4">
                     <div>
-                        <p class="font-semibold text-gray-800">Français</p>
-                        <p class="text-sm text-gray-600">Courant</p>
+                        <p id="lang-french-name" class="font-semibold text-gray-800">Français</p>
+                        <p id="lang-french-level" class="text-sm text-gray-600">Courant</p>
                     </div>
                     <div>
-                        <p class="font-semibold text-gray-800">Malgache</p>
-                        <p class="text-sm text-gray-600">Natif</p>
+                        <p id="lang-malagasy-name" class="font-semibold text-gray-800">Malgache</p>
+                        <p id="lang-malagasy-level" class="text-sm text-gray-600">Natif</p>
                     </div>
                     <div>
-                        <p class="font-semibold text-gray-800">Anglais</p>
-                        <p class="text-sm text-gray-600">Professionnel</p>
+                        <p id="lang-english-name" class="font-semibold text-gray-800">Anglais</p>
+                        <p id="lang-english-level" class="text-sm text-gray-600">Professionnel</p>
                     </div>
                 </div>
             </section>
@@ -288,12 +382,133 @@
 
         <!-- Footer -->
         <div class="bg-gray-100 px-12 py-4 text-center text-xs text-gray-600">
-            <p>Antananarivo, Madagascar • Portfolio: fitahianaleong.dev</p>
+            <p id="footer-text">Antananarivo, Madagascar • Portfolio: fitahianaleong.dev</p>
         </div>
 
     </div>
 
     <script>
+        // Get current language from localStorage or default to French
+        const currentLang = getCurrentLanguage();
+        const t = cvTranslations[currentLang];
+
+        // Toggle dropdown
+        function toggleLangDropdown() {
+            const dropdown = document.getElementById('lang-dropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('lang-dropdown');
+            const button = document.getElementById('lang-dropdown-btn');
+            if (dropdown && button && !dropdown.contains(event.target) && !button.contains(event.target)) {
+                dropdown.classList.add('hidden');
+            }
+        });
+
+        // Select language
+        function selectLanguage(lang) {
+            setLanguage(lang);
+        }
+
+        // Update dropdown UI based on current language
+        function updateDropdownUI() {
+            document.getElementById('lang-display').textContent = currentLang.toUpperCase();
+            document.getElementById('check-fr').classList.toggle('hidden', currentLang !== 'fr');
+            document.getElementById('check-en').classList.toggle('hidden', currentLang !== 'en');
+        }
+
+        updateDropdownUI();
+
+        // Translate CV content
+        function translateCV() {
+            // Update document title
+            document.title = t.title;
+
+            // Update download button
+            document.getElementById('cv-download-btn').textContent = t.downloadPDF;
+
+            // Update role
+            document.getElementById('cv-role').textContent = t.role;
+
+            // Update sections titles
+            document.querySelector('#about-title').textContent = t.about.title;
+            document.querySelector('#experience-title').textContent = t.experience.title;
+            document.querySelector('#projects-title').textContent = t.projects.title;
+            document.querySelector('#skills-title').textContent = t.skills.title;
+            document.querySelector('#formation-title').textContent = t.formation.title;
+            document.querySelector('#languages-title').textContent = t.languages.title;
+
+            // Update about section
+            const aboutIntro = document.querySelector('#about-intro');
+            if (aboutIntro) {
+                aboutIntro.innerHTML = `<span class="font-semibold">${t.about.intro}</span> ${t.about.text}`;
+            }
+
+            // Update experience
+            document.querySelector('#exp-bici-role').textContent = t.experience.bici.role;
+            document.querySelector('#exp-bici-period').textContent = t.experience.bici.period;
+            document.querySelector('#exp-bici-desc').textContent = t.experience.bici.description;
+
+            document.querySelector('#exp-ibonia-role').textContent = t.experience.ibonia.role;
+            document.querySelector('#exp-ibonia-period').textContent = t.experience.ibonia.period;
+            document.querySelector('#exp-ibonia-desc').textContent = t.experience.ibonia.description;
+
+            // Update projects
+            document.querySelector('#proj-att-title').textContent = t.projects.att.title;
+            document.querySelector('#proj-att-subtitle').textContent = t.projects.att.subtitle;
+            document.querySelector('#proj-att-desc').textContent = t.projects.att.description;
+
+            document.querySelector('#proj-socobis-title').textContent = t.projects.socobis.title;
+            document.querySelector('#proj-socobis-subtitle').textContent = t.projects.socobis.subtitle;
+            document.querySelector('#proj-socobis-desc').textContent = t.projects.socobis.description;
+
+            document.querySelector('#proj-ussd-title').textContent = t.projects.ussd.title;
+            document.querySelector('#proj-ussd-subtitle').textContent = t.projects.ussd.subtitle;
+            document.querySelector('#proj-ussd-desc').textContent = t.projects.ussd.description;
+
+            document.querySelector('#proj-lewis-title').textContent = t.projects.lewis.title;
+            document.querySelector('#proj-lewis-subtitle').textContent = t.projects.lewis.subtitle;
+            document.querySelector('#proj-lewis-desc').textContent = t.projects.lewis.description;
+
+            document.querySelector('#proj-tender-title').textContent = t.projects.tender.title;
+            document.querySelector('#proj-tender-subtitle').textContent = t.projects.tender.subtitle;
+            document.querySelector('#proj-tender-desc').textContent = t.projects.tender.description;
+
+            document.querySelector('#proj-spat-title').textContent = t.projects.spat.title;
+            document.querySelector('#proj-spat-subtitle').textContent = t.projects.spat.subtitle;
+            document.querySelector('#proj-spat-desc').textContent = t.projects.spat.description;
+
+            // Update skills section titles
+            document.querySelector('#skills-backend').textContent = t.skills.backend;
+            document.querySelector('#skills-frontend').textContent = t.skills.frontend;
+            document.querySelector('#skills-database').textContent = t.skills.database;
+            document.querySelector('#skills-devops').textContent = t.skills.devops;
+
+            // Update formation
+            document.querySelector('#formation-m1-degree').textContent = t.formation.m1.degree;
+            document.querySelector('#formation-m1-period').textContent = t.formation.m1.period;
+            document.querySelector('#formation-m1-badge').textContent = t.formation.m1.status;
+
+            document.querySelector('#formation-licence-degree').textContent = t.formation.licence.degree;
+            document.querySelector('#formation-licence-period').textContent = t.formation.licence.period;
+
+            // Update languages
+            document.querySelector('#lang-french-name').textContent = t.languages.french.name;
+            document.querySelector('#lang-french-level').textContent = t.languages.french.level;
+            document.querySelector('#lang-malagasy-name').textContent = t.languages.malagasy.name;
+            document.querySelector('#lang-malagasy-level').textContent = t.languages.malagasy.level;
+            document.querySelector('#lang-english-name').textContent = t.languages.english.name;
+            document.querySelector('#lang-english-level').textContent = t.languages.english.level;
+
+            // Update footer
+            document.querySelector('#footer-text').innerHTML = `${t.footer.location} • ${t.footer.portfolio}: fitahianaleong.dev`;
+        }
+
+        // Run translation on load
+        translateCV();
+
         // Auto-print on load when accessed with ?print parameter
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('print') === 'true') {
