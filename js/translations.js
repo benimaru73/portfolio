@@ -1,7 +1,6 @@
 // Traductions pour le portfolio et CV
 const translations = {
     fr: {
-        // Navigation
         nav: {
             projects: "Projets",
             experience: "Expérience",
@@ -9,50 +8,34 @@ const translations = {
             formation: "Formation",
             contact: "Contact"
         },
-        // Hero Section
         hero: {
-            greeting: "Bonjour, moi c'est",
-            role: "Développeur Full Stack",
-            description: "Je pense résolution. Je parle solutions.",
-            descriptionSub: "L'ingénierie logicielle en est l'expression.",
-            location: "Antananarivo, Madagascar",
-            downloadCV: "Télécharger CV",
-            viewProjects: "Voir projets"
+            badge: "Disponible pour de nouveaux défis",
+            line1: "Je pense résolution.",
+            line2: "Je parle solutions.",
+            desc: 'Depuis 2025, j\'ai participé à plusieurs projets professionnels qui ont renforcé mes compétences et ma compréhension du métier. Actuellement développeur full stack chez <span class="font-bold text-gradient-600 dark:text-gradient-400">BICI</span>, je travaille sur des solutions pratiques tout en continuant à progresser chaque jour.<br><span class="block mt-3 md:mt-4 font-medium text-slate-900 dark:text-slate-200">Aujourd\'hui Dev full stack, je developpe des solutions qui génèrent un impact tangible.</span>',
+            btnProjects: "Voir mes réalisations",
+            btnCV: "Télécharger mon CV"
         },
-        // Skills
         skills: {
-            title: "Technologies & Compétences",
-            subtitle: "Stack technique maîtrisée"
+            label: "Stack Technique"
         },
-        // Projects
-        projects: {
-            title: "Projets Sélectionnés",
-            subtitle: "Systèmes critiques & solutions d'entreprise"
+        sections: {
+            projectsTitle: "Projets Sélectionnés",
+            projectsDesc: 'Une collection de solutions <span class="text-blue-600 dark:text-blue-400">full-stack</span> déployées, alliant complexité métier et expérience utilisateur.',
+            experienceTitle: "Parcours & Impact",
+            formationTitle: "Formation Académique",
+            formationDesc: 'Parcours universitaire à <span class="text-purple-600 dark:text-purple-400 font-semibold">ITU University</span>'
         },
-        // Experience
-        experience: {
-            title: "Parcours Professionnel",
-            subtitle: "De la fintech aux systèmes gouvernementaux"
-        },
-        // Formation
-        formation: {
-            title: "Formation Académique",
-            subtitle: "Parcours universitaire à",
-            inProgress: "En cours"
-        },
-        // Contact
         contact: {
-            title: "Restons en Contact",
-            description: "Une idée de projet, une opportunité ou simplement envie d'échanger ? N'hésitez pas à me contacter.",
-            email: "Email",
-            phone: "Téléphone",
-            linkedin: "LinkedIn",
-            github: "GitHub",
-            location: "Localisation"
+            title: "Prêt à collaborer ?",
+            desc: "J'aide les entreprises à transformer leurs défis techniques en avantages compétitifs.",
+            btnCV: "Télécharger mon CV"
+        },
+        formation: {
+            inProgress: "En cours"
         }
     },
     en: {
-        // Navigation
         nav: {
             projects: "Projects",
             experience: "Experience",
@@ -60,46 +43,31 @@ const translations = {
             formation: "Education",
             contact: "Contact"
         },
-        // Hero Section
         hero: {
-            greeting: "Hi, I'm",
-            role: "Full Stack Developer",
-            description: "I think resolution. I speak solutions.",
-            descriptionSub: "Software engineering is the expression.",
-            location: "Antananarivo, Madagascar",
-            downloadCV: "Download CV",
-            viewProjects: "View Projects"
+            badge: "Available for new challenges",
+            line1: "I think resolution.",
+            line2: "I speak solutions.",
+            desc: 'Since 2025, I\'ve been involved in several professional projects that strengthened my skills and understanding of the craft. Currently a full stack developer at <span class="font-bold text-gradient-600 dark:text-gradient-400">BICI</span>, I work on practical solutions while continuing to grow every day.<br><span class="block mt-3 md:mt-4 font-medium text-slate-900 dark:text-slate-200">Today as a Full Stack Dev, I build solutions that create tangible impact.</span>',
+            btnProjects: "View my work",
+            btnCV: "Download my CV"
         },
-        // Skills
         skills: {
-            title: "Technologies & Skills",
-            subtitle: "Mastered technical stack"
+            label: "Tech Stack"
         },
-        // Projects
-        projects: {
-            title: "Selected Projects",
-            subtitle: "Critical systems & enterprise solutions"
+        sections: {
+            projectsTitle: "Selected Projects",
+            projectsDesc: 'A collection of deployed <span class="text-blue-600 dark:text-blue-400">full-stack</span> solutions, combining business complexity and user experience.',
+            experienceTitle: "Journey & Impact",
+            formationTitle: "Academic Background",
+            formationDesc: 'University path at <span class="text-purple-600 dark:text-purple-400 font-semibold">ITU University</span>'
         },
-        // Experience
-        experience: {
-            title: "Professional Journey",
-            subtitle: "From fintech to government systems"
-        },
-        // Formation
-        formation: {
-            title: "Academic Background",
-            subtitle: "University path at",
-            inProgress: "In Progress"
-        },
-        // Contact
         contact: {
-            title: "Let's Connect",
-            description: "Have a project idea, an opportunity, or just want to chat? Feel free to reach out.",
-            email: "Email",
-            phone: "Phone",
-            linkedin: "LinkedIn",
-            github: "GitHub",
-            location: "Location"
+            title: "Ready to collaborate?",
+            desc: "I help companies turn their technical challenges into competitive advantages.",
+            btnCV: "Download my CV"
+        },
+        formation: {
+            inProgress: "In Progress"
         }
     }
 };
