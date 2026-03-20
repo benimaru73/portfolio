@@ -166,6 +166,17 @@
                         <p class="text-xs text-gray-500 mt-1">Java EE • PostgreSQL • Architecture Asynchrone</p>
                     </div>
 
+                    <!-- Projet 1 bis -->
+                    <div class="border-l-4 border-indigo-600 pl-4">
+                        <h4 id="proj-att-refonte-title" class="font-bold text-gray-800">Agence des Transports Terrestres (ATT) - Refonte Applicative</h4>
+                        <p id="proj-att-refonte-subtitle" class="text-sm text-gray-600 mb-1">Refonte d'un projet existant (2026)</p>
+                        <p id="proj-att-refonte-desc" class="text-sm text-gray-700">
+                            Contribution sur le système d'amendes, le paiement des redevances des agents,
+                            et la gestion des voitures gagées avec arrêt de gage.
+                        </p>
+                        <p class="text-xs text-gray-500 mt-1">Java EE • GovTech • Amendes & Redevances</p>
+                    </div>
+
                     <!-- Projet 2 -->
                     <div class="border-l-4 border-red-600 pl-4">
                         <h4 id="proj-socobis-title" class="font-bold text-gray-800">ERP Socobis - Core Comptabilité</h4>
@@ -403,6 +414,10 @@
             document.querySelector('#proj-att-title').textContent = t.projects.att.title;
             document.querySelector('#proj-att-subtitle').textContent = t.projects.att.subtitle;
             document.querySelector('#proj-att-desc').textContent = t.projects.att.description;
+
+            document.querySelector('#proj-att-refonte-title').textContent = t.projects.attRefonte.title;
+            document.querySelector('#proj-att-refonte-subtitle').textContent = t.projects.attRefonte.subtitle;
+            document.querySelector('#proj-att-refonte-desc').textContent = t.projects.attRefonte.description;
 
             document.querySelector('#proj-socobis-title').textContent = t.projects.socobis.title;
             document.querySelector('#proj-socobis-subtitle').textContent = t.projects.socobis.subtitle;

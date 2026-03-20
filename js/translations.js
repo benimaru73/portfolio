@@ -104,6 +104,11 @@ const cvTranslations = {
                 subtitle: "Cartes Grises & Permis Biométriques (ATT - 2026)",
                 description: "Modernisation de l'administration publique malgache. Centralisation des données biométriques, orchestration des workflows de délivrance des titres sécurisés au niveau national."
             },
+            attRefonte: {
+                title: "Agence des Transports Terrestres (ATT) - Refonte Applicative",
+                subtitle: "Refonte d'un projet existant (2026)",
+                description: "Contribution sur le système d'amendes, le paiement des redevances des agents, et la gestion des voitures gagées avec arrêt de gage."
+            },
             socobis: {
                 title: "ERP Socobis - Core Comptabilité",
                 subtitle: "Refonte complète du système financier (2025)",
@@ -189,6 +194,11 @@ const cvTranslations = {
                 title: "National Identity & Transport System (GovTech)",
                 subtitle: "Vehicle Registration & Biometric Driver's Licenses (ATT - 2026)",
                 description: "Modernization of Malagasy public administration. Centralization of biometric data, orchestration of national-level secure document issuance workflows."
+            },
+            attRefonte: {
+                title: "Land Transport Agency (ATT) - Application Refactoring",
+                subtitle: "Refactoring of an existing project (2026)",
+                description: "Contribution to the fines system, agent levy payments, and management of pledged vehicles with pledge release workflow."
             },
             socobis: {
                 title: "Socobis ERP - Core Accounting",
