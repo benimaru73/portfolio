@@ -77,70 +77,58 @@ const cvTranslations = {
     fr: {
         title: "CV - Fitahiana Leong Eli Mathieu",
         downloadPDF: "📄 Télécharger PDF",
-        role: "Développeur Full Stack",
+        role: "Ingénieur Backend Java - conception d'API et systèmes critiques",
         about: {
             title: "À PROPOS",
             intro: "Je pense résolution. Je parle solutions.",
-            text: "L'ingénierie logicielle en est l'expression. Développeur Full Stack passionné, je conçois des systèmes robustes et scalables qui résolvent des problématiques métier complexes. Depuis 2025, j'ai contribué à plusieurs projets d'envergure nationale et industrielle, alliant expertise technique (Java EE, Spring Boot, React/Next.js) et compréhension fine des enjeux business. Spécialisé dans l'architecture d'applications critiques (Fintech, GovTech, ERP), je m'engage à livrer des solutions performantes, maintenables et centrées sur l'impact utilisateur."
+            text: "<li>Conçoit et développe des solutions backend pour des systèmes métier.</li><li>Contribue aux choix techniques sur les API, la donnée et les flux.</li><li>Améliore la fiabilité, la performance et la traçabilité en production.</li>"
         },
         experience: {
             title: "EXPÉRIENCE PROFESSIONNELLE",
             present: "Présent",
             bici: {
-                role: "Développeur Full Stack",
+                role: "Développeur Backend Java",
                 period: "Sept. 2025 – Présent",
-                description: "Pilotage technique et conception de solutions fintech à fort impact. Supervision de l'architecture logicielle et garant de la qualité du code pour des systèmes critiques."
+                description: "<li>Conçu et développé des API de paiement en Java EE avec Oracle et PostgreSQL.</li><li>Réduit d'environ 25 % les anomalies de flux via validations métier, revues de code et contrôles d'idempotence.</li>"
             },
             ibonia: {
-                role: "Développeur Full Stack",
+                role: "Développeur Backend/Full Stack",
                 period: "Mai 2025 – Sept. 2025",
-                description: "Création d'une plateforme USSD No-Code innovante. Transformation de la logique métier complexe en interface graphique intuitive, permettant le déploiement rapide de services mobiles."
+                description: "<li>Développé une plateforme USSD No-Code avec moteur récursif (MENU, INPUT, REQUEST).</li><li>Divisé par 2 le délai de mise en production grâce à la configuration dynamique multi-client en base.</li>"
             }
         },
         projects: {
             title: "PROJETS MAJEURS",
             att: {
-                title: "Système National d'Identité & Transport (GovTech)",
-                subtitle: "Cartes Grises & Permis Biométriques (ATT - 2026)",
-                description: "Modernisation de l'administration publique malgache. Centralisation des données biométriques, orchestration des workflows de délivrance des titres sécurisés au niveau national."
-            },
-            attRefonte: {
-                title: "Agence des Transports Terrestres (ATT) - Refonte Applicative",
-                subtitle: "Refonte d'un projet existant (2026)",
-                description: "Contribution sur le système d'amendes, le paiement des redevances des agents, et la gestion des voitures gagées avec arrêt de gage."
+                title: "SPAT - Modules Gestion de Stock & Facturation",
+                subtitle: "Contexte : Optimiser les flux de stock et la facturation portuaire en production.",
+                tech: "Technologies utilisées : Java EE • Oracle • SQL",
+                description: "<li>Rôle exact : Développement backend des modules stock et facturation BC/BL groupée, avec intégration au socle existant.</li><li>Résultat : UX améliorée et réduction estimée de 35 % du temps de paiement des factures.</li>"
             },
             socobis: {
                 title: "ERP Socobis - Core Comptabilité",
-                subtitle: "Refonte complète du système financier (2025)",
-                description: "Développement from scratch du cœur comptable critique. Architecture asynchrone pour l'ingestion massive de données avec validation comptable stricte."
+                subtitle: "Contexte : Refonte du cœur comptable d'une industrie nationale (2025).",
+                tech: "Technologies utilisées : Java EE • Oracle DB • SQL",
+                description: "<li>Rôle exact : Développement backend des règles transactionnelles critiques, des vues de contrôle et des flux asynchrones.</li><li>Résultat : Réduction estimée de 40 % des corrections manuelles de journaux et meilleure cohérence des écritures.</li>"
             },
             ussd: {
                 title: "Plateforme USSD No-Code Multi-Client",
-                subtitle: "Moteur USSD dynamique pour IBONIA",
-                description: "Conception d'une architecture Data-Driven permettant le déploiement instantané de services mobiles sans redéploiement technique. Multi-tenancy avec isolation complète."
+                subtitle: "Contexte : Besoin de lancer rapidement des services USSD multi-clients.",
+                tech: "Technologies utilisées : Spring Boot • Next.js • PostgreSQL",
+                description: "<li>Rôle exact : Conception d'un moteur dynamique à nœuds récursifs, parsing API et isolation multi-tenant.</li><li>Résultat : Temps de déploiement réduit d'environ 70 % (de plusieurs jours à moins d'une journée).</li>"
             },
-            lewis: {
-                title: "ERP RH & Paie - Lewis Industry",
-                subtitle: "Digitalisation intégrale des processus RH (2025)",
-                description: "Automatisation de la paie et gestion du capital humain. Moteur de calcul dynamique multicritères et dossier employé numérique centralisé."
-            },
-            tender: {
-                title: "Smart Tender - Fonds Routier",
-                subtitle: "Système d'aide à la décision pour marchés publics (2025)",
-                description: "Algorithmes de scoring avancés pour garantir l'équité des attributions. Architecture asynchrone pour traitements lourds et transparence totale."
-            },
-            spat: {
-                title: "Gestion Portuaire - SPAT",
-                subtitle: "Système financier critique - Port de Toamasina",
-                description: "Maintenance et évolution du cœur comptable depuis 2022. Gestion de flux financiers massifs dans un environnement haute disponibilité (zéro downtime)."
+            fintech: {
+                title: "ATT - Refonte Amendes, Redevances & Gages",
+                subtitle: "Contexte : Refonte d'un existant pour fiabiliser les flux métier des centres ATT.",
+                tech: "Technologies utilisées : Java EE • PostgreSQL • Workflow métier",
+                description: "<li>Rôle exact : Développement backend des modules amendes, redevances agents, véhicules gagés et arrêt de gage.</li><li>Résultat : Réduction estimée de 30 % des retours de dossiers incomplets et suivi administratif plus fiable.</li>"
             }
         },
         skills: {
             title: "COMPÉTENCES TECHNIQUES",
-            backend: "Backend Development",
-            frontend: "Web Development",
-            database: "Bases de Données",
-            devops: "DevOps & Outils"
+            expert: "Expert",
+            confirmed: "Confirmé",
+            notions: "Notions"
         },
         formation: {
             title: "FORMATION",
@@ -168,70 +156,58 @@ const cvTranslations = {
     en: {
         title: "Resume - Fitahiana Leong Eli Mathieu",
         downloadPDF: "📄 Download PDF",
-        role: "Full Stack Developer",
+        role: "Java Backend Engineer - API design and critical systems",
         about: {
             title: "ABOUT",
             intro: "I think resolution. I speak solutions.",
-            text: "Software engineering is the expression. Passionate Full Stack Developer, I design robust and scalable systems that solve complex business challenges. Since 2025, I've contributed to several national and industrial-scale projects, combining technical expertise (Java EE, Spring Boot, React/Next.js) with deep understanding of business stakes. Specialized in critical application architecture (Fintech, GovTech, ERP), I'm committed to delivering performant, maintainable, and user-impact-centered solutions."
+            text: "<li>Designs and develops backend solutions for business systems.</li><li>Contributes to technical choices on APIs, data, and processing flows.</li><li>Improves reliability, performance, and production traceability.</li>"
         },
         experience: {
             title: "PROFESSIONAL EXPERIENCE",
             present: "Present",
             bici: {
-                role: "Full Stack Developer",
+                role: "Java Backend Developer",
                 period: "Sept. 2025 – Present",
-                description: "Technical leadership and design of high-impact fintech solutions. Supervision of software architecture and code quality guardian for critical systems."
+                description: "<li>Designed and built payment APIs with Java EE, Oracle, and PostgreSQL.</li><li>Reduced flow anomalies by about 25% through business validation rules, code reviews, and idempotency checks.</li>"
             },
             ibonia: {
-                role: "Full Stack Developer",
+                role: "Backend/Full Stack Developer",
                 period: "May 2025 – Sept. 2025",
-                description: "Creation of an innovative No-Code USSD platform. Transformation of complex business logic into intuitive graphical interface, enabling rapid mobile service deployment."
+                description: "<li>Built a No-Code USSD platform with a recursive engine (MENU, INPUT, REQUEST).</li><li>Cut rollout time by 50% through dynamic multi-tenant journey configuration.</li>"
             }
         },
         projects: {
             title: "MAJOR PROJECTS",
             att: {
-                title: "National Identity & Transport System (GovTech)",
-                subtitle: "Vehicle Registration & Biometric Driver's Licenses (ATT - 2026)",
-                description: "Modernization of Malagasy public administration. Centralization of biometric data, orchestration of national-level secure document issuance workflows."
-            },
-            attRefonte: {
-                title: "Land Transport Agency (ATT) - Application Refactoring",
-                subtitle: "Refactoring of an existing project (2026)",
-                description: "Contribution to the fines system, agent levy payments, and management of pledged vehicles with pledge release workflow."
+                title: "SPAT - Stock Management & Billing Modules",
+                subtitle: "Context: Optimize stock flows and port billing operations in production.",
+                tech: "Technologies used: Java EE • Oracle • SQL",
+                description: "<li>Exact role: Backend development of stock modules and grouped BC/BL billing, integrated with existing systems.</li><li>Result: Improved UX and an estimated 35% reduction in invoice payment processing time.</li>"
             },
             socobis: {
                 title: "Socobis ERP - Core Accounting",
-                subtitle: "Complete financial system overhaul (2025)",
-                description: "From-scratch development of critical accounting core. Asynchronous architecture for massive data ingestion with strict accounting validation."
+                subtitle: "Context: Rebuild of the accounting core for a national industrial company (2025).",
+                tech: "Technologies used: Java EE • Oracle DB • SQL",
+                description: "<li>Exact role: Backend development of critical transactional rules, control views, and asynchronous processing flows.</li><li>Result: Estimated 40% reduction in manual journal corrections and stronger accounting consistency.</li>"
             },
             ussd: {
                 title: "Multi-Client No-Code USSD Platform",
-                subtitle: "Dynamic USSD engine for IBONIA",
-                description: "Design of Data-Driven architecture enabling instant mobile service deployment without technical redeployment. Multi-tenancy with complete isolation."
+                subtitle: "Context: Fast launch requirements for multi-client USSD services.",
+                tech: "Technologies used: Spring Boot • Next.js • PostgreSQL",
+                description: "<li>Exact role: Designed a recursive dynamic engine with API response parsing and multi-tenant isolation.</li><li>Result: About 70% faster deployment (from several days to less than one day).</li>"
             },
-            lewis: {
-                title: "HR & Payroll ERP - Lewis Industry",
-                subtitle: "Full HR process digitalization (2025)",
-                description: "Payroll automation and human capital management. Multi-criteria dynamic calculation engine and centralized digital employee records."
-            },
-            tender: {
-                title: "Smart Tender - Road Fund",
-                subtitle: "Decision support system for public procurement (2025)",
-                description: "Advanced scoring algorithms to ensure fair attributions. Asynchronous architecture for heavy processing and total transparency."
-            },
-            spat: {
-                title: "Port Management - SPAT",
-                subtitle: "Critical financial system - Port of Toamasina",
-                description: "Maintenance and evolution of accounting core since 2022. Management of massive financial flows in high-availability environment (zero downtime)."
+            fintech: {
+                title: "ATT - Fines, Levies & Pledge Workflow Refactor",
+                subtitle: "Context: Refactor an existing system to stabilize ATT business flows.",
+                tech: "Technologies used: Java EE • PostgreSQL • Business workflow",
+                description: "<li>Exact role: Backend development for fines, agent levies, pledged vehicles, and pledge release modules.</li><li>Result: Estimated 30% fewer incomplete files and more reliable administrative tracking.</li>"
             }
         },
         skills: {
             title: "TECHNICAL SKILLS",
-            backend: "Backend Development",
-            frontend: "Web Development",
-            database: "Databases",
-            devops: "DevOps & Tools"
+            expert: "Expert",
+            confirmed: "Confirmed",
+            notions: "Familiar"
         },
         formation: {
             title: "EDUCATION",

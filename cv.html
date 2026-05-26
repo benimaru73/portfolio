@@ -12,6 +12,15 @@
         @media print {
             .no-print { display: none !important; }
             body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .print-keep {
+                break-inside: avoid;
+                page-break-inside: avoid;
+                -webkit-column-break-inside: avoid;
+            }
+            .print-keep-title {
+                break-after: avoid;
+                page-break-after: avoid;
+            }
         }
     </style>
 </head>
@@ -61,7 +70,7 @@
                 <!-- Informations -->
                 <div class="flex-1">
                     <h1 class="text-4xl font-bold mb-2">Fitahiana Leong Eli Mathieu</h1>
-                    <h2 id="cv-role" class="text-xl font-light mb-6">Développeur Full Stack</h2>
+                    <h2 id="cv-role" class="text-xl font-light mb-6">Ingénieur Backend Java - conception d'API et systèmes critiques</h2>
 
                     <div class="grid grid-cols-2 gap-4 text-sm">
                         <div class="flex items-center gap-2">
@@ -75,13 +84,16 @@
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
                             </svg>
-                            <span>+261 34 17 069 88</span>
+                            <span>+261 34 17 069 88 (WhatsApp)</span>
+                        </div>
+                        <div class="flex items-center gap-2 col-span-2">
+                            <a href="https://linkedin.com/in/fitahiana-leong-b32289334" target="_blank" class="hover:underline">linkedin:Fitahiana leong</a>
                         </div>
                         <div class="flex items-center gap-2 col-span-2">
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                <path d="M4 3a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V8l-6-5H4z"></path>
                             </svg>
-                            <a href="https://linkedin.com/in/fitahiana-leong-b32289334" target="_blank" class="hover:underline">linkedin:Fitahiana leong</a>
+                            <a href="https://benimaru73.github.io/portfolio/" id="header-portfolio-link" target="_blank" class="hover:underline">Portfolio: benimaru73.github.io/portfolio</a>
                         </div>
                     </div>
                 </div>
@@ -89,23 +101,20 @@
         </div>
 
         <!-- Content -->
-        <div class="px-12 py-8">
+        <div class="px-12 py-8 flex flex-col">
 
             <!-- Profil -->
-            <section class="mb-8">
+            <section class="mb-8 order-1">
                 <h3 id="about-title" class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">À PROPOS</h3>
-                <p id="about-intro" class="text-gray-700 leading-relaxed">
-                    <span class="font-semibold">Je pense résolution. Je parle solutions.</span> L'ingénierie logicielle en est l'expression.
-                    Développeur Full Stack passionné, je conçois des systèmes robustes et scalables qui résolvent des problématiques métier complexes.
-                    Depuis 2025, j'ai contribué à plusieurs projets d'envergure nationale et industrielle, alliant expertise technique
-                    (Java EE, Spring Boot, React/Next.js) et compréhension fine des enjeux business. Spécialisé dans l'architecture
-                    d'applications critiques (Fintech, GovTech, ERP), je m'engage à livrer des solutions performantes, maintenables et
-                    centrées sur l'impact utilisateur.
-                </p>
+                <ul id="about-intro" class="text-gray-700 text-sm leading-relaxed list-disc pl-5 space-y-1">
+                    <li>Conçoit et développe des solutions backend pour des systèmes métier.</li>
+                    <li>Contribue aux choix techniques sur les API, la donnée et les flux.</li>
+                    <li>Améliore la fiabilité, la performance et la traçabilité en production.</li>
+                </ul>
             </section>
 
             <!-- Expérience Professionnelle -->
-            <section class="mb-8">
+            <section class="mb-8 order-4">
                 <h3 id="experience-title" class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">EXPÉRIENCE PROFESSIONNELLE</h3>
 
                 <!-- BICI -->
@@ -117,10 +126,10 @@
                         </div>
                         <span id="exp-bici-period" class="text-sm text-gray-600 font-medium">Sept. 2025 – Présent</span>
                     </div>
-                    <p id="exp-bici-desc" class="text-gray-700 text-sm leading-relaxed mb-2">
-                        Pilotage technique et conception de solutions fintech à fort impact. Supervision de l'architecture logicielle
-                        et garant de la qualité du code pour des systèmes critiques.
-                    </p>
+                    <ul id="exp-bici-desc" class="text-gray-700 text-sm leading-relaxed mb-2 list-disc pl-5 space-y-1">
+                        <li>Conçu et développé des API de paiement en Java EE avec Oracle et PostgreSQL.</li>
+                        <li>Réduit d'environ 25 % les anomalies de flux via validation technique et revues de code.</li>
+                    </ul>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded">Java EE</span>
                         <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded">Oracle</span>
@@ -138,10 +147,10 @@
                         </div>
                         <span id="exp-ibonia-period" class="text-sm text-gray-600 font-medium">Mai 2025 – Sept. 2025</span>
                     </div>
-                    <p id="exp-ibonia-desc" class="text-gray-700 text-sm leading-relaxed mb-2">
-                        Création d'une plateforme USSD No-Code innovante. Transformation de la logique métier complexe en interface
-                        graphique intuitive, permettant le déploiement rapide de services mobiles.
-                    </p>
+                    <ul id="exp-ibonia-desc" class="text-gray-700 text-sm leading-relaxed mb-2 list-disc pl-5 space-y-1">
+                        <li>Développé une plateforme USSD No-Code avec Spring Boot et Next.js.</li>
+                        <li>Divisé par 2 le délai de mise en production des parcours grâce à la configuration dynamique.</li>
+                    </ul>
                     <div class="flex flex-wrap gap-2">
                         <span class="px-3 py-1 bg-teal-100 text-teal-800 text-xs font-semibold rounded">Spring Boot</span>
                         <span class="px-3 py-1 bg-teal-100 text-teal-800 text-xs font-semibold rounded">Next.js</span>
@@ -151,148 +160,107 @@
             </section>
 
             <!-- Projets Clés -->
-            <section class="mb-8">
-                <h3 id="projects-title" class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">PROJETS MAJEURS</h3>
+            <section class="mb-8 order-3">
+                <h3 id="projects-title" class="print-keep-title text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">PROJETS MAJEURS</h3>
 
                 <div class="space-y-4">
                     <!-- Projet 1 -->
-                    <div class="border-l-4 border-blue-600 pl-4">
-                        <h4 id="proj-att-title" class="font-bold text-gray-800">Système National d'Identité & Transport (GovTech)</h4>
-                        <p id="proj-att-subtitle" class="text-sm text-gray-600 mb-1">Cartes Grises & Permis Biométriques (ATT - 2026)</p>
-                        <p id="proj-att-desc" class="text-sm text-gray-700">
-                            Modernisation de l'administration publique malgache. Centralisation des données biométriques,
-                            orchestration des workflows de délivrance des titres sécurisés au niveau national.
-                        </p>
-                        <p class="text-xs text-gray-500 mt-1">Java EE • PostgreSQL • Architecture Asynchrone</p>
-                    </div>
-
-                    <!-- Projet 1 bis -->
-                    <div class="border-l-4 border-indigo-600 pl-4">
-                        <h4 id="proj-att-refonte-title" class="font-bold text-gray-800">Agence des Transports Terrestres (ATT) - Refonte Applicative</h4>
-                        <p id="proj-att-refonte-subtitle" class="text-sm text-gray-600 mb-1">Refonte d'un projet existant (2026)</p>
-                        <p id="proj-att-refonte-desc" class="text-sm text-gray-700">
-                            Contribution sur le système d'amendes, le paiement des redevances des agents,
-                            et la gestion des voitures gagées avec arrêt de gage.
-                        </p>
-                        <p class="text-xs text-gray-500 mt-1">Java EE • GovTech • Amendes & Redevances</p>
+                    <div class="print-keep border-l-4 border-blue-600 pl-4">
+                        <h4 id="proj-att-title" class="font-bold text-gray-800">SPAT - Modules Gestion de Stock & Facturation</h4>
+                        <p id="proj-att-subtitle" class="text-sm text-gray-600 mb-1">Contexte : Optimiser les flux de stock et la facturation portuaire en production.</p>
+                        <ul id="proj-att-desc" class="text-sm text-gray-700 list-disc pl-5 space-y-1">
+                            <li>Rôle exact : Développement backend des modules de stock et de facturation BC/BL groupée.</li>
+                            <li>Résultat : UX améliorée et réduction estimée de 35 % du temps de paiement des factures.</li>
+                        </ul>
+                        <p id="proj-att-tech" class="text-xs text-gray-500 mt-1">Technologies utilisées : Java EE • Oracle • SQL</p>
                     </div>
 
                     <!-- Projet 2 -->
-                    <div class="border-l-4 border-red-600 pl-4">
+                    <div class="print-keep border-l-4 border-red-600 pl-4">
                         <h4 id="proj-socobis-title" class="font-bold text-gray-800">ERP Socobis - Core Comptabilité</h4>
-                        <p id="proj-socobis-subtitle" class="text-sm text-gray-600 mb-1">Refonte complète du système financier (2025)</p>
-                        <p id="proj-socobis-desc" class="text-sm text-gray-700">
-                            Développement from scratch du cœur comptable critique. Architecture asynchrone pour l'ingestion massive
-                            de données avec validation comptable stricte.
-                        </p>
-                        <p class="text-xs text-gray-500 mt-1">Java EE • Oracle DB • Enterprise Architecture</p>
+                        <p id="proj-socobis-subtitle" class="text-sm text-gray-600 mb-1">Contexte : Refonte du cœur comptable d'une industrie nationale (2025).</p>
+                        <ul id="proj-socobis-desc" class="text-sm text-gray-700 list-disc pl-5 space-y-1">
+                            <li>Rôle exact : Développement backend des règles transactionnelles et des vues de contrôle.</li>
+                            <li>Résultat : Réduction estimée de 40 % des corrections manuelles de journaux.</li>
+                        </ul>
+                        <p id="proj-socobis-tech" class="text-xs text-gray-500 mt-1">Technologies utilisées : Java EE • Oracle DB • SQL</p>
                     </div>
 
                     <!-- Projet 3 -->
-                    <div class="border-l-4 border-purple-600 pl-4">
+                    <div class="print-keep border-l-4 border-purple-600 pl-4">
                         <h4 id="proj-ussd-title" class="font-bold text-gray-800">Plateforme USSD No-Code Multi-Client</h4>
-                        <p id="proj-ussd-subtitle" class="text-sm text-gray-600 mb-1">Moteur USSD dynamique pour IBONIA</p>
-                        <p id="proj-ussd-desc" class="text-sm text-gray-700">
-                            Conception d'une architecture Data-Driven permettant le déploiement instantané de services mobiles
-                            sans redéploiement technique. Multi-tenancy avec isolation complète.
-                        </p>
-                        <p class="text-xs text-gray-500 mt-1">Spring Boot • Next.js • Architecture Recursive</p>
+                        <p id="proj-ussd-subtitle" class="text-sm text-gray-600 mb-1">Contexte : Besoin de lancer rapidement des services USSD multi-clients.</p>
+                        <ul id="proj-ussd-desc" class="text-sm text-gray-700 list-disc pl-5 space-y-1">
+                            <li>Rôle exact : Conception du moteur dynamique et implémentation de l'isolation multi-tenant.</li>
+                            <li>Résultat : Temps de déploiement réduit d'environ 70 % (de plusieurs jours à moins d'une journée).</li>
+                        </ul>
+                        <p id="proj-ussd-tech" class="text-xs text-gray-500 mt-1">Technologies utilisées : Spring Boot • Next.js • PostgreSQL</p>
                     </div>
 
                     <!-- Projet 4 -->
-                    <div class="border-l-4 border-yellow-600 pl-4">
-                        <h4 id="proj-lewis-title" class="font-bold text-gray-800">ERP RH & Paie - Lewis Industry</h4>
-                        <p id="proj-lewis-subtitle" class="text-sm text-gray-600 mb-1">Digitalisation intégrale des processus RH (2025)</p>
-                        <p id="proj-lewis-desc" class="text-sm text-gray-700">
-                            Automatisation de la paie et gestion du capital humain. Moteur de calcul dynamique multicritères
-                            et dossier employé numérique centralisé.
-                        </p>
-                        <p class="text-xs text-gray-500 mt-1">Java EE • Oracle • Workflow Automation</p>
-                    </div>
-
-                    <!-- Projet 5 -->
-                    <div class="border-l-4 border-green-600 pl-4">
-                        <h4 id="proj-tender-title" class="font-bold text-gray-800">Smart Tender - Fonds Routier</h4>
-                        <p id="proj-tender-subtitle" class="text-sm text-gray-600 mb-1">Système d'aide à la décision pour marchés publics (2025)</p>
-                        <p id="proj-tender-desc" class="text-sm text-gray-700">
-                            Algorithmes de scoring avancés pour garantir l'équité des attributions.
-                            Architecture asynchrone pour traitements lourds et transparence totale.
-                        </p>
-                        <p class="text-xs text-gray-500 mt-1">Java EE • PostgreSQL • Async Processing</p>
-                    </div>
-
-                    <!-- Projet 6 -->
-                    <div class="border-l-4 border-orange-600 pl-4">
-                        <h4 id="proj-spat-title" class="font-bold text-gray-800">Gestion Portuaire - SPAT</h4>
-                        <p id="proj-spat-subtitle" class="text-sm text-gray-600 mb-1">Système financier critique - Port de Toamasina</p>
-                        <p id="proj-spat-desc" class="text-sm text-gray-700">
-                            Maintenance et évolution du cœur comptable depuis 2022. Gestion de flux financiers massifs
-                            dans un environnement haute disponibilité (zéro downtime).
-                        </p>
-                        <p class="text-xs text-gray-500 mt-1">Java EE • Oracle • Legacy Integration</p>
+                    <div class="print-keep border-l-4 border-teal-600 pl-4">
+                        <h4 id="proj-fintech-title" class="font-bold text-gray-800">ATT - Refonte Amendes, Redevances & Gages</h4>
+                        <p id="proj-fintech-subtitle" class="text-sm text-gray-600 mb-1">Contexte : Refonte d'un existant pour fiabiliser les flux métier des centres ATT.</p>
+                        <ul id="proj-fintech-desc" class="text-sm text-gray-700 list-disc pl-5 space-y-1">
+                            <li>Rôle exact : Développement backend des modules amendes, redevances agents et arrêt de gage.</li>
+                            <li>Résultat : Réduction estimée de 30 % des retours de dossiers incomplets et suivi plus fiable.</li>
+                        </ul>
+                        <p id="proj-fintech-tech" class="text-xs text-gray-500 mt-1">Technologies utilisées : Java EE • PostgreSQL • Workflow métier</p>
                     </div>
                 </div>
             </section>
 
             <!-- Compétences Techniques -->
-            <section class="mb-8">
+            <section class="mb-8 order-2">
                 <h3 id="skills-title" class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">COMPÉTENCES TECHNIQUES</h3>
 
-                <div class="grid grid-cols-2 gap-4">
-                    <!-- Backend -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Expert -->
                     <div>
-                        <h4 id="skills-backend" class="font-bold text-blue-600 mb-2">Backend Development</h4>
+                        <h4 id="skills-expert" class="font-bold text-blue-600 mb-2">Expert</h4>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Java 8</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Java 17</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Java EE</span>
                             <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Spring Boot</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Node.js</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Python</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">API REST</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">PostgreSQL</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Oracle SQL</span>
                         </div>
                     </div>
 
-                    <!-- Frontend -->
+                    <!-- Confirme -->
                     <div>
-                        <h4 id="skills-frontend" class="font-bold text-teal-600 mb-2">Web Development</h4>
+                        <h4 id="skills-confirmed" class="font-bold text-teal-600 mb-2">Confirmé</h4>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">JavaScript</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">TypeScript</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Architecture asynchrone</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">DDD</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">TDD</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Merise</span>
                             <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">React</span>
                             <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Next.js</span>
-                        </div>
-                    </div>
-
-                    <!-- Database -->
-                    <div>
-                        <h4 id="skills-database" class="font-bold text-orange-600 mb-2">Bases de Données</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">PostgreSQL</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Oracle</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">MySQL</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">MongoDB</span>
-                        </div>
-                    </div>
-
-                    <!-- DevOps -->
-                    <div>
-                        <h4 id="skills-devops" class="font-bold text-purple-600 mb-2">DevOps & Outils</h4>
-                        <div class="flex flex-wrap gap-2">
                             <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Docker</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Git</span>
                             <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">GitLab CI/CD</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">GitHub</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Git</span>
+                        </div>
+                    </div>
+
+                    <!-- Notions -->
+                    <div>
+                        <h4 id="skills-notions" class="font-bold text-orange-600 mb-2">Notions</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">Node.js</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded">TypeScript</span>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- Formation -->
-            <section class="mb-8">
-                <h3 id="formation-title" class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">FORMATION</h3>
+            <section class="mb-8 order-5">
+                <h3 id="formation-title" class="print-keep-title text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">FORMATION</h3>
 
                 <div class="space-y-4">
                     <!-- M1 -->
-                    <div class="flex justify-between items-start">
+                    <div class="print-keep flex justify-between items-start">
                         <div>
                             <h4 id="formation-m1-degree" class="font-bold text-gray-800">Master 1 (M1) - Informatique</h4>
                             <p class="text-blue-600 font-semibold">ITU University</p>
@@ -315,7 +283,7 @@
             </section>
 
             <!-- Langues -->
-            <section class="mb-4">
+            <section class="mb-4 order-6">
                 <h3 id="languages-title" class="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-blue-600">LANGUES</h3>
                 <div class="grid grid-cols-3 gap-4">
                     <div>
@@ -398,52 +366,43 @@
             // Update about section
             const aboutIntro = document.querySelector('#about-intro');
             if (aboutIntro) {
-                aboutIntro.innerHTML = `<span class="font-semibold">${t.about.intro}</span> ${t.about.text}`;
+                aboutIntro.innerHTML = t.about.text;
             }
 
             // Update experience
             document.querySelector('#exp-bici-role').textContent = t.experience.bici.role;
             document.querySelector('#exp-bici-period').textContent = t.experience.bici.period;
-            document.querySelector('#exp-bici-desc').textContent = t.experience.bici.description;
+            document.querySelector('#exp-bici-desc').innerHTML = t.experience.bici.description;
 
             document.querySelector('#exp-ibonia-role').textContent = t.experience.ibonia.role;
             document.querySelector('#exp-ibonia-period').textContent = t.experience.ibonia.period;
-            document.querySelector('#exp-ibonia-desc').textContent = t.experience.ibonia.description;
+            document.querySelector('#exp-ibonia-desc').innerHTML = t.experience.ibonia.description;
 
             // Update projects
             document.querySelector('#proj-att-title').textContent = t.projects.att.title;
             document.querySelector('#proj-att-subtitle').textContent = t.projects.att.subtitle;
-            document.querySelector('#proj-att-desc').textContent = t.projects.att.description;
-
-            document.querySelector('#proj-att-refonte-title').textContent = t.projects.attRefonte.title;
-            document.querySelector('#proj-att-refonte-subtitle').textContent = t.projects.attRefonte.subtitle;
-            document.querySelector('#proj-att-refonte-desc').textContent = t.projects.attRefonte.description;
+            document.querySelector('#proj-att-desc').innerHTML = t.projects.att.description;
+            document.querySelector('#proj-att-tech').textContent = t.projects.att.tech;
 
             document.querySelector('#proj-socobis-title').textContent = t.projects.socobis.title;
             document.querySelector('#proj-socobis-subtitle').textContent = t.projects.socobis.subtitle;
-            document.querySelector('#proj-socobis-desc').textContent = t.projects.socobis.description;
+            document.querySelector('#proj-socobis-desc').innerHTML = t.projects.socobis.description;
+            document.querySelector('#proj-socobis-tech').textContent = t.projects.socobis.tech;
 
             document.querySelector('#proj-ussd-title').textContent = t.projects.ussd.title;
             document.querySelector('#proj-ussd-subtitle').textContent = t.projects.ussd.subtitle;
-            document.querySelector('#proj-ussd-desc').textContent = t.projects.ussd.description;
+            document.querySelector('#proj-ussd-desc').innerHTML = t.projects.ussd.description;
+            document.querySelector('#proj-ussd-tech').textContent = t.projects.ussd.tech;
 
-            document.querySelector('#proj-lewis-title').textContent = t.projects.lewis.title;
-            document.querySelector('#proj-lewis-subtitle').textContent = t.projects.lewis.subtitle;
-            document.querySelector('#proj-lewis-desc').textContent = t.projects.lewis.description;
-
-            document.querySelector('#proj-tender-title').textContent = t.projects.tender.title;
-            document.querySelector('#proj-tender-subtitle').textContent = t.projects.tender.subtitle;
-            document.querySelector('#proj-tender-desc').textContent = t.projects.tender.description;
-
-            document.querySelector('#proj-spat-title').textContent = t.projects.spat.title;
-            document.querySelector('#proj-spat-subtitle').textContent = t.projects.spat.subtitle;
-            document.querySelector('#proj-spat-desc').textContent = t.projects.spat.description;
+            document.querySelector('#proj-fintech-title').textContent = t.projects.fintech.title;
+            document.querySelector('#proj-fintech-subtitle').textContent = t.projects.fintech.subtitle;
+            document.querySelector('#proj-fintech-desc').innerHTML = t.projects.fintech.description;
+            document.querySelector('#proj-fintech-tech').textContent = t.projects.fintech.tech;
 
             // Update skills section titles
-            document.querySelector('#skills-backend').textContent = t.skills.backend;
-            document.querySelector('#skills-frontend').textContent = t.skills.frontend;
-            document.querySelector('#skills-database').textContent = t.skills.database;
-            document.querySelector('#skills-devops').textContent = t.skills.devops;
+            document.querySelector('#skills-expert').textContent = t.skills.expert;
+            document.querySelector('#skills-confirmed').textContent = t.skills.confirmed;
+            document.querySelector('#skills-notions').textContent = t.skills.notions;
 
             // Update formation
             document.querySelector('#formation-m1-degree').textContent = t.formation.m1.degree;

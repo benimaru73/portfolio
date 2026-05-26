@@ -3,7 +3,7 @@ const experienceData = [
         title: "Développeur Full Stack",
         company: "BICI",
         companyColorClass: "text-blue-600 dark:text-blue-400",
-        period: "Septembre 2025 – Présent",
+        period: "Octobre 2025 – Présent",
         description:
             "Pilotage technique et conception de solutions fintech à fort impact. Supervision de l'architecture logicielle et garant de la qualité du code pour des systèmes critiques. Contribution active à la vision technologique et mentorat des équipes de développement.",
         tags: [
@@ -17,7 +17,7 @@ const experienceData = [
         title: "Développeur Full Stack",
         company: "IBONIA",
         companyColorClass: "text-teal-600 dark:text-teal-400",
-        period: "Mai 2025 – Septembre 2025",
+        period: "Mai 2025 – Octobre 2025",
         description:
             "Création d'une plateforme USSD No-Code innovante. Transformation de la logique métier complexe en interface graphique intuitive, permettant le déploiement rapide de services mobiles sans intervention technique.",
         tags: [

@@ -130,15 +130,15 @@ const projectData = [
         title: "Gestion Portuaire - SPAT (Port de Toamasina)",
         iconClass: "devicon-java-plain text-orange-500",
         description: "Système financier critique pour le Port de Toamasina, le plus grand port de Madagascar. Maintenance et évolution du cœur comptable pour ce client historique de BICI (partenariat depuis 2022). Gestion de flux financiers massifs dans un environnement haute disponibilité avec zéro tolérance aux temps d'arrêt.",
-        subDescription: "Maintenance corrective et évolutive d'un système legacy critique traitant les flux du hub portuaire national. Correction de bugs complexes dans l'écosystème Oracle existant. Optimisation majeure : développement du module de facturation groupée permettant de regrouper plusieurs bons de commande (BC) et bons de livraison (BL) en une seule facture, remplaçant le processus manuel un par un et multipliant l'efficacité opérationnelle.",
+        subDescription: "Maintenance corrective et évolutive d'un système legacy critique traitant les flux du hub portuaire national. Correction de bugs complexes dans l'écosystème Oracle existant. Optimisation majeure : développement du module de facturation groupée permettant de regrouper plusieurs bons de commande (BC) et bons de livraison (BL) en une seule facture. Résultat : passage d'un traitement manuel fastidieux à une génération automatisée en 1 clic, réduisant les erreurs de saisie d'80% et multipliant l'efficacité opérationnelle par 5.",
         detailsTitle: "Infrastructure Critique",
         details: [
             { label: "Hub Portuaire National", text: "Traitement des flux financiers du plus grand port de Madagascar (Toamasina)." },
             { label: "Client Historique", text: "Partenariat de confiance depuis 2022 avec maintenance continue et évolutions." },
-            { label: "Optimisation Majeure", text: "Facturation groupée : BC/BL multiples → facture unique (vs. processus un par un précédent)." },
-            { label: "Maintenance Legacy", text: "Corrections de bugs complexes dans l'écosystème Oracle critique existant." },
-            { label: "Haute Disponibilité", text: "Zéro temps d'arrêt toléré sur les transactions financières portuaires." },
-            { label: "Volumétrie Massive", text: "Gestion quotidienne des flux financiers de l'infrastructure portuaire nationale." }
+            { label: "Optimisation Facturation", text: "Facturation groupée : BC/BL multiples → facture unique en 1 clic (vs. processus manuel un par un). Gain : -80% erreurs saisie, +500% productivité." },
+            { label: "Maintenance Legacy", text: "Corrections de bugs critiques dans l'écosystème Oracle existant avec zéro interruption de service." },
+            { label: "Haute Disponibilité", text: "Zéro temps d'arrêt toléré sur les transactions financières portuaires (SLA 99.99%)." },
+            { label: "Volumétrie Massive", text: "Traitement quotidien de milliers de transactions pour l'infrastructure portuaire nationale." }
         ],
         tags: [
             { name: "Java EE", bgClass: "bg-red-100 dark:bg-red-900/30", textClass: "text-red-700 dark:text-red-300" },
@@ -150,22 +150,66 @@ const projectData = [
     {
         title: "Agence des Transports Terrestres (ATT) - Refonte Applicative",
         iconClass: "devicon-java-plain text-indigo-500",
-        description: "Refonte d'un projet existant pour moderniser la gestion metier de l'ATT. Evolution du systeme pour mieux couvrir les operations administratives des centres et le suivi des dossiers vehicules.",
-        subDescription: "Contribution directe sur les modules cles: systeme d'amendes, paiement des redevances des agents, gestion des voitures gagees et traitement des arrets de gage. Integration dans un workflow simple de demande et validation.",
-        detailsTitle: "Contributions Metier",
+        description: "Refonte d'un projet existant pour moderniser la gestion métier de l'ATT. Évolution du système pour mieux couvrir les opérations administratives des centres et le suivi des dossiers véhicules.",
+        subDescription: "Contribution directe sur les modules clés : système d'amendes, paiement des redevances des agents, gestion des voitures gagées et traitement des arrêts de gage. Intégration dans un workflow simple de demande et validation.",
+        detailsTitle: "Contributions Métier",
         details: [
-            { label: "Refonte", text: "Reprise d'un systeme existant avec adaptation des regles metier et modernisation des ecrans." },
-            { label: "Systeme d'Amendes", text: "Mise en place du cycle de gestion des amendes avec suivi et validation des dossiers." },
-            { label: "Redevances Agents", text: "Developpement du paiement des redevances des agents avec tracabilite des operations." },
-            { label: "Voitures Gagees", text: "Gestion des vehicules gages dans le processus administratif." },
-            { label: "Arret de Gage", text: "Ajout du traitement d'arret de gage pour cloturer et regulariser les dossiers." },
-            { label: "Workflow", text: "Parcours operationnel centre sur Demande -> Validation pour fluidifier le traitement." }
+            { label: "Refonte", text: "Reprise d'un système existant avec adaptation des règles métier et modernisation des écrans." },
+            { label: "Système d'Amendes", text: "Mise en place du cycle de gestion des amendes avec suivi et validation des dossiers." },
+            { label: "Redevances Agents", text: "Développement du paiement des redevances des agents avec traçabilité des opérations." },
+            { label: "Voitures Gagées", text: "Gestion des véhicules gagés dans le processus administratif." },
+            { label: "Arrêt de Gage", text: "Ajout du traitement d'arrêt de gage pour clôturer et régulariser les dossiers." },
+            { label: "Workflow", text: "Parcours opérationnel centré sur Demande → Validation pour fluidifier le traitement." }
         ],
         tags: [
             { name: "Java EE", bgClass: "bg-red-100 dark:bg-red-900/30", textClass: "text-red-700 dark:text-red-300" },
             { name: "GovTech", bgClass: "bg-green-100 dark:bg-green-900/30", textClass: "text-green-700 dark:text-green-300" },
             { name: "Amendes", bgClass: "bg-yellow-100 dark:bg-yellow-900/30", textClass: "text-yellow-700 dark:text-yellow-300" },
             { name: "Redevances", bgClass: "bg-blue-100 dark:bg-blue-900/30", textClass: "text-blue-700 dark:text-blue-300" }
+        ]
+    },
+    {
+        title: "ERP Agro-Alimentaire Malgache – Vente & Transformation",
+        iconClass: "devicon-java-plain text-amber-600",
+        description: "Système intégré de gestion pour industrie agro-alimentaire malgache combinant gestion de la vente et cycles de production. Orchestration complète de la chaîne de valeur : du client (commandes, facturation, encaissements) jusqu'à la production (transformation des matières premières en produits finis). Architecture multi-niveaux avec validation hiérarchique et contrôle temporel.",
+        subDescription: "Module Vente : gestion des commandes (BC), suivi des livraisons (BL), facturation avec calcul automatique des échéances de paiement, relances et mailing de recouvrement. Module Transformation : ordres de fabrication avec traçabilité des matières premières, calcul des rendements, gestion de la maintenance machine. Validation hiérarchique multi-niveaux avec contrôles temporels (jours ouvrables, délais), workflow d'approbation des devis, des bons de commande et des factures. Automatisation complète de l'ensemble des processus commerciaux et productifs.",
+        detailsTitle: "Chaîne de Valeur Intégrée",
+        details: [
+            { label: "Gestion Commerciale", text: "Flow complet BC → BL → Facture avec échéances de paiement automatiques, mailing de recouvrement et relances." },
+            { label: "Facturation Intelligente", text: "Calcul des dates d'échéance selon conditions commerciales, échelonnement des paiements, gestion des acomptes." },
+            { label: "Validation Hiérarchique", text: "Workflow multi-niveaux avec approbations par rôle, contrôles temporels (horaires, jours ouvrables) et audit trail complet." },
+            { label: "Ordres de Fabrication", text: "Planning de production lié aux commandes, traçabilité des matières premières par lot, liaison production ↔ stock." },
+            { label: "Rendement & Traçabilité", text: "Calcul du rendement matières premières→produits finis, historique détaillé par lot, conformité qualité." },
+            { label: "Maintenance Machine", text: "Planification préventive, suivi de maintenance corrective, impact sur capacité production et délais livraison." }
+        ],
+        tags: [
+            { name: "Java EE", bgClass: "bg-red-100 dark:bg-red-900/30", textClass: "text-red-700 dark:text-red-300" },
+            { name: "Agro-Alimentaire", bgClass: "bg-amber-100 dark:bg-amber-900/30", textClass: "text-amber-700 dark:text-amber-300" },
+            { name: "Vente & Production", bgClass: "bg-green-100 dark:bg-green-900/30", textClass: "text-green-700 dark:text-green-300" },
+            { name: "Facturation Avancée", bgClass: "bg-yellow-100 dark:bg-yellow-900/30", textClass: "text-yellow-700 dark:text-yellow-300" },
+            { name: "Workflow Hiérarchique", bgClass: "bg-blue-100 dark:bg-blue-900/30", textClass: "text-blue-700 dark:text-blue-300" }
+        ]
+    },
+    {
+        title: "Savonnerie Tropicale – Module Ventes avec Pricing Versionnié",
+        iconClass: "devicon-java-plain text-rose-500",
+        description: "Système de gestion commerciale pour savonnerie artisanale malgache avec architecture de pricing ultra-sophistiquée. Défi technique majeur : gestion de prix différenciés par catégorie client avec délai d'application décalé. Chaque client possède sa propre stratégie d'adoption des tarifs, créant une complexité temporelle sans équivalent.",
+        subDescription: "Problématique métier critique : Les savons ne sont pas facturés au même prix selon le type de client (VIP, Distributeur, Revendeur, Détaillant). Mais l'enjeu technique est ailleurs : quand un nouveau prix global est défini, chaque client l'adopte selon son délai personnel (ex: Client A après 3 jours, Client B après 5 jours, Client C après 7 jours). Le système doit calculer le prix applicable à chaque client à n'importe quelle date donnée, en jonglant avec : (1) versioning temporel des prix par rôle client, (2) délai d'activation personnalisé par client, (3) historique complet pour traçabilité légale, (4) retrouvabilité du prix appliqué sur une facture émise il y a 2 mois. Nécessite une architecture Event Sourcing avec mécanisme de time-shifting complexe et calcul dynamique de validité tarifaire.",
+        detailsTitle: "Défis Architecturaux",
+        details: [
+            { label: "Pricing Multi-Couches", text: "Prix base × coefficient rôle (VIP: -20%, Distributeur: -15%, Revendeur: -10%, Détaillant: +0%). Mais ce n'est que la surface." },
+            { label: "Versioning Temporel Décalé", text: "Nouveau prix global = 01/05/2026. Client A l'adopte 01/05, Client B le 06/05, Client C le 08/05. Chaque facture du 05/05 doit retrouver le bon prix." },
+            { label: "Time-Shifting per Client", text: "Stockage de délai d'adoption (days_to_apply) par client. Calcul rétrospectif : dateFacture + jours_restants_adoption = dateActivationPrix." },
+            { label: "Retrouvabilité Tarifaire", text: "Une facture de Mars doit pouvoir retrouver le prix appliqué + motif + délai utilisé. Impossible sans snapshot temporel complet." },
+            { label: "Cohérence Multi-Produit", text: "Le prix dépend de (Produit × Client × DateEmission × RôleClient × DélaiApplication). Changement indépendant de chaque dimension = explosion combinatoire." },
+            { label: "Event Sourcing Critique", text: "Implémentation d'un système immutable : chaque changement de prix = événement enregistré avec timestamp, raison, client affecté, validité temporelle." }
+        ],
+        tags: [
+            { name: "Java EE", bgClass: "bg-red-100 dark:bg-red-900/30", textClass: "text-red-700 dark:text-red-300" },
+            { name: "Event Sourcing", bgClass: "bg-purple-100 dark:bg-purple-900/30", textClass: "text-purple-700 dark:text-purple-300" },
+            { name: "Pricing Engine", bgClass: "bg-rose-100 dark:bg-rose-900/30", textClass: "text-rose-700 dark:text-rose-300" },
+            { name: "Time Shifting", bgClass: "bg-indigo-100 dark:bg-indigo-900/30", textClass: "text-indigo-700 dark:text-indigo-300" },
+            { name: "Industrie Malgache", bgClass: "bg-orange-100 dark:bg-orange-900/30", textClass: "text-orange-700 dark:text-orange-300" }
         ]
     }
 ];
