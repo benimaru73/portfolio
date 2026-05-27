@@ -283,10 +283,15 @@
 
         <div class="container mx-auto px-4 md:px-6 relative z-10">
             <div class="mb-12 md:mb-20">
-                <h2 id="section-projects-title" class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 font-display">Projets Sélectionnés</h2>
-                <p id="section-projects-desc" class="text-base md:text-lg lg:text-xl text-gray-500 dark:text-gray-400 max-w-2xl font-light">
+                <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
+                    <h2 id="section-projects-title" class="text-3xl md:text-4xl lg:text-5xl font-bold font-display">Projets Sélectionnés</h2>
+                </div>
+                <p id="section-projects-desc" class="text-base md:text-lg lg:text-xl text-gray-500 dark:text-gray-400 max-w-2xl font-light mt-4">
                     Une collection de solutions <span class="text-blue-600 dark:text-blue-400">full-stack</span> déployées, alliant complexité métier et expérience utilisateur.
                 </p>
+                <div class="mt-5 text-3xl md:text-4xl lg:text-5xl text-gray-400 font-semibold">
+                    + de <span id="projects-count" class="text-slate-900 dark:text-slate-100 font-bold">0</span> projet réalisés
+                </div>
             </div>
 
             <!-- Bento Grid Layout -->
@@ -369,7 +374,7 @@
                 </a>
                 <a href="tel:+261341706988" class="px-8 py-3 rounded-full bg-slate-100 dark:bg-white/10 hover:bg-slate-200 text-slate-900 dark:text-white transition-all flex items-center gap-2">
                     <!-- WhatsApp Icon included implicitly via phone link logic if user has app, otherwise call -->
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2z"></path></svg>
                     +261 34 17 069 88
                 </a>
             </div>
@@ -403,15 +408,36 @@
                 el.className = 'group relative flex flex-col items-center justify-center cursor-default';
                 el.innerHTML = `
                     <div class="p-4 bg-white dark:bg-white/5 rounded-2xl shadow-sm border border-gray-100 dark:border-white/5 group-hover:scale-110 transition-transform duration-300">
-                        <i class="${skill.iconClass} text-2xl md:text-3xl filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all"></i>
+                        <i class="${skill.iconClass} text-2xl md:text-3xl"></i>
                     </div>
                 `;
                 container.appendChild(el);
             });
         }
 
+        function animateCount(element, target, duration = 1200) {
+            const start = performance.now();
+
+            function tick(now) {
+                const progress = Math.min((now - start) / duration, 1);
+                const value = Math.floor(progress * target);
+                element.textContent = value.toString();
+
+                if (progress < 1) {
+                    requestAnimationFrame(tick);
+                }
+            }
+
+            requestAnimationFrame(tick);
+        }
+
         function renderProjects() {
             const projectContainer = document.getElementById('projects-container');
+            const projectsCount = document.getElementById('projects-count');
+
+            if (projectsCount) {
+                animateCount(projectsCount, projectData.length);
+            }
 
             // On inverse l'ordre pour afficher les derniers éléments du tableau en premier
             // .slice() crée une copie pour ne pas muter l'original, .reverse() inverse la copie
@@ -530,16 +556,15 @@
                 card.innerHTML = `
                     ${statusBadge}
 
-                    <div class="flex items-start gap-4">
-                        <div class="text-5xl">${formation.icon}</div>
-                        <div class="flex-1">
-                            <span class="text-xs font-bold tracking-wider text-gray-400 uppercase block mb-2">${formation.period}</span>
-                            <h3 class="text-xl md:text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2 font-display">${formation.degree}</h3>
-                            <div class="text-base font-semibold ${formation.schoolColorClass}">
-                                ${formation.school}
-                            </div>
+                    <div>
+                        <span class="text-xs font-bold tracking-wider text-gray-400 uppercase block mb-2">${formation.period}</span>
+                        <h3 class="text-xl md:text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2 font-display">${formation.degree}</h3>
+                        <div class="text-base font-semibold ${formation.schoolColorClass} mb-3">
+                            ${formation.school}
                         </div>
                     </div>
+                    ${formation.description ? `<p class="text-sm text-gray-600 dark:text-gray-400 mb-4">${formation.description}</p>` : ''}
+                    ${formation.tags.length > 0 ? tagsHtml : ''}
                 `;
                 container.appendChild(card);
             });
